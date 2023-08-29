@@ -1,14 +1,35 @@
+import { DEBUG } from './config.js'
 import { fetchFile } from './fs.js'
-import { JSO, HiraganaUnicodeJSO, HiraganaUnicodeData } from './types.js'
+import { JSO, HiraganaUnicodeJSO, HiraganaUnicodeData, LoadKanaArgs } from './types.js'
 
 
-const HIRAGANA: JSO<string, string> = await loadHiraganaAsMap({ 
-    groupsFilter: ['hiragana letters', 'small letters', 'combinable letters'],
-    inputsFilter: ['-xa', '-xi', '-xu', '-xe', '-xo', '-xka', '-xke', '-xwa', '-wi', '-vu', '-we']
-})
+// const HIRAGANA: JSO<string, string> = await loadHiraganaAsMap({ 
+//     groupsFilter: ['hiragana letters', 'small letters', 'combinable letters'],
+//     inputsFilter: ['-xa', '-xi', '-xu', '-xe', '-xo', '-xka', '-xke', '-xwa', '-wi', '-vu', '-we']
+// })
 
-// Peek hiragana map
-// console.log(Object.entries(HIRAGANA).map(([key, value]) => `${key} = ${HiraganaChar.hex2symbol(value)}`))
+
+
+class Kana {
+    private static _hiragana: JSO<string, string> = {}
+
+    public static async loadHiragana(args: LoadKanaArgs): Promise<void> {
+        Kana._hiragana = await loadHiraganaAsMap(args)
+    }
+
+    public static get HIRAGANA(): JSO<string, string> {
+        return Kana._hiragana
+    }
+
+    public static get HIRAGANA_CODES(): string[] {
+        return [...new Set(Object.values(Kana._hiragana))]
+    }
+
+    public static hiragana(key: string): string | null {
+        const value = Kana._hiragana[key]
+        return value === undefined ? null : value
+    }
+}
 
 
 class HiraganaChar {
@@ -55,7 +76,8 @@ class HiraganaChar {
     public get isDoubleConsonant(): boolean {
         return this.input.length > 2 && // tte, ccha
             this.input.charAt(0) === this.input.charAt(1) &&
-            HIRAGANA[this.input.slice(1)] !== undefined
+            Kana.hiragana(this.input.slice(1)) !== null
+            // HIRAGANA[this.input.slice(1)] !== undefined
     }
 
     public get isYouon(): [string, string] | null {
@@ -139,29 +161,47 @@ class HiraganaChar {
 
     private validate(): boolean {
         if (this.isDoubleConsonant) {
-            this.output = HiraganaChar.hex2symbol(HIRAGANA['xtsu'])
-                        + HiraganaChar.hex2symbol(HIRAGANA[this.input.substring(1)])
+            const [a, b] = [Kana.hiragana('xtsu'), Kana.hiragana(this.input.slice(1))]
+
+            if (a === null || b === null) {
+                return false
+            }
+
+            this.output = HiraganaChar.hex2symbol(a)
+                        + HiraganaChar.hex2symbol(b)
             return true
         }
 
         let youon: [string, string] | null = this.isYouon
         if (youon !== null) {
-            this.output = HiraganaChar.hex2symbol(HIRAGANA[youon[0]])
-                        + HiraganaChar.hex2symbol(HIRAGANA[youon[1]])
+            const [a, b] = [Kana.hiragana(youon[0]), Kana.hiragana(youon[1])]
+
+            if (a === null || b === null) {
+                return false
+            }
+
+            this.output = HiraganaChar.hex2symbol(a)
+                        + HiraganaChar.hex2symbol(b)
             return true
         }
 
         let double_consonant_and_youon: [string, string, string] | null = this.isDoubleConsonantAndYouon
         if (double_consonant_and_youon !== null) {
-            this.output = HiraganaChar.hex2symbol(HIRAGANA[double_consonant_and_youon[0]])
-                        + HiraganaChar.hex2symbol(HIRAGANA[double_consonant_and_youon[1]])
-                        + HiraganaChar.hex2symbol(HIRAGANA[double_consonant_and_youon[2]])
+            const [a, b, c] = [Kana.hiragana(double_consonant_and_youon[0]), Kana.hiragana(double_consonant_and_youon[1]), Kana.hiragana(double_consonant_and_youon[2])]
+
+            if (a === null || b === null || c == null) {
+                return false
+            }
+
+            this.output = HiraganaChar.hex2symbol(a)
+                        + HiraganaChar.hex2symbol(b)
+                        + HiraganaChar.hex2symbol(c)
             return true
         }
 
-        let raw_code: string = HIRAGANA[this.input]
-        if (raw_code !== undefined) {
-            this.output = HiraganaChar.hex2symbol(HIRAGANA[this.input])
+        let raw_code = Kana.hiragana(this.input)
+        if (raw_code !== null) {
+            this.output = HiraganaChar.hex2symbol(raw_code)
             return true
         }
 
@@ -176,13 +216,9 @@ async function loadHiragana({
         groupsFilter, 
         inputsFilter, 
         combinationsFilter 
-    }: { 
-        filepath?           :string, 
-        descriptionsFilter? :string[], 
-        groupsFilter?       :string[], 
-        inputsFilter?       :string[], 
-        combinationsFilter? :string[] 
-    } = {}
+    }
+    : LoadKanaArgs 
+    = {}
 ): Promise<HiraganaUnicodeJSO | {}> {
     const separator = '-'
     const filterStringProperty = (prop: string, target: string[]) => !target.length || target.includes(prop)
@@ -224,18 +260,14 @@ async function loadHiragana({
 }
 
 async function loadHiraganaAsMap({ 
-    filepath, 
-    descriptionsFilter, 
-    groupsFilter, 
-    inputsFilter, 
-    combinationsFilter 
-}: { 
-    filepath?           :string, 
-    descriptionsFilter? :string[], 
-    groupsFilter?       :string[], 
-    inputsFilter?       :string[], 
-    combinationsFilter? :string[] 
-} = {}
+        filepath, 
+        descriptionsFilter, 
+        groupsFilter, 
+        inputsFilter, 
+        combinationsFilter 
+    }
+    : LoadKanaArgs 
+    = {}
 ): Promise<JSO<string, string> | {}> {
     const data: HiraganaUnicodeJSO = await loadHiragana({ filepath, descriptionsFilter, groupsFilter, inputsFilter, combinationsFilter })
 
@@ -249,4 +281,4 @@ async function loadHiraganaAsMap({
 }
 
 
-export { HIRAGANA, HiraganaChar, loadHiragana, loadHiraganaAsMap }
+export { Kana, HiraganaChar, loadHiragana, loadHiraganaAsMap }

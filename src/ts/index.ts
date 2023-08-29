@@ -1,5 +1,12 @@
 import { DEBUG } from './config.js'
-import { HIRAGANA, HiraganaChar } from './kana.js'
+import preload from './preload.js'
+import { Kana, HiraganaChar } from './kana.js'
+
+
+await preload()
+
+// Peek hiragana map
+DEBUG && console.log(Object.entries(Kana.HIRAGANA).map(([key, value]) => `${key} = ${HiraganaChar.hex2symbol(value)}`))
 
 
 const textarea = document.querySelector('#textarea') as HTMLElement
@@ -63,7 +70,7 @@ textarea.addEventListener('keydown', (event: KeyboardEvent) => {
 
 function generateRandomHiragana(): string {
     const wordSize = { min: 8, max: 20 }
-    const chars = [...new Set(Object.values(HIRAGANA))]
+    const chars: string[] = Kana.HIRAGANA_CODES
     const el = document.querySelector('#generated') as HTMLElement
 
     let text = ''
