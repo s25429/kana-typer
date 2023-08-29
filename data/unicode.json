@@ -1,0 +1,614 @@
+{
+  "hiragana": {
+    "3041": {
+      "description": "hiragana letter small a",
+      "group": "small letters",
+      "inputs": ["xa"],
+      "combination": []
+    },
+    "3042": {
+      "description": "hiragana letter a",
+      "group": "hiragana letters",
+      "inputs": ["a"],
+      "combination": []
+    },
+    "3043": {
+      "description": "hiragana letter small i",
+      "group": "small letters",
+      "inputs": ["xi"],
+      "combination": []
+    },
+    "3044": {
+      "description": "hiragana letter i",
+      "group": "hiragana letters",
+      "inputs": ["i"],
+      "combination": []
+    },
+    "3045": {
+      "description": "hiragana letter small u",
+      "group": "small letters",
+      "inputs": ["xu"],
+      "combination": []
+    },
+    "3046": {
+      "description": "hiragana letter u",
+      "group": "hiragana letters",
+      "inputs": ["u"],
+      "combination": []
+    },
+    "3047": {
+      "description": "hiragana letter small e",
+      "group": "small letters",
+      "inputs": ["xe"],
+      "combination": []
+    },
+    "3048": {
+      "description": "hiragana letter e",
+      "group": "hiragana letters",
+      "inputs": ["e"],
+      "combination": []
+    },
+    "3049": {
+      "description": "hiragana letter small o",
+      "group": "small letters",
+      "inputs": ["xo"],
+      "combination": []
+    },
+    "304a": {
+      "description": "hiragana letter o",
+      "group": "hiragana letters",
+      "inputs": ["o"],
+      "combination": []
+    },
+    "304b": {
+      "description": "hiragana letter ka",
+      "group": "hiragana letters",
+      "inputs": ["ka"],
+      "combination": []
+    },
+    "304c": {
+      "description": "hiragana letter ga",
+      "group": "combinable letters",
+      "inputs": ["ga"],
+      "combination": ["304b", "3099"]
+    },
+    "304d": {
+      "description": "hiragana letter ki",
+      "group": "hiragana letters",
+      "inputs": ["ki"],
+      "combination": []
+    },
+    "304e": {
+      "description": "hiragana letter gi",
+      "group": "combinable letters",
+      "inputs": ["gi"],
+      "combination": ["304d", "3099"]
+    },
+    "304f": {
+      "description": "hiragana letter ku",
+      "group": "hiragana letters",
+      "inputs": ["ku"],
+      "combination": []
+    },
+    "3050": {
+      "description": "hiragana letter gu",
+      "group": "combinable letters",
+      "inputs": ["gu"],
+      "combination": ["304f", "3099"]
+    },
+    "3051": {
+      "description": "hiragana letter ke",
+      "group": "hiragana letters",
+      "inputs": ["ke"],
+      "combination": []
+    },
+    "3052": {
+      "description": "hiragana letter ge",
+      "group": "combinable letters",
+      "inputs": ["ge"],
+      "combination": ["3051", "3099"]
+    },
+    "3053": {
+      "description": "hiragana letter ko",
+      "group": "hiragana letters",
+      "inputs": ["ko"],
+      "combination": []
+    },
+    "3054": {
+      "description": "hiragana letter go",
+      "group": "combinable letters",
+      "inputs": ["go"],
+      "combination": ["3053", "3099"]
+    },
+    "3055": {
+      "description": "hiragana letter sa",
+      "group": "hiragana letters",
+      "inputs": ["sa"],
+      "combination": []
+    },
+    "3056": {
+      "description": "hiragana letter za",
+      "group": "combinable letters",
+      "inputs": ["za"],
+      "combination": ["3055", "3099"]
+    },
+    "3057": {
+      "description": "hiragana letter si",
+      "group": "hiragana letters",
+      "inputs": ["si", "shi"],
+      "combination": []
+    },
+    "3058": {
+      "description": "hiragana letter zi",
+      "group": "combinable letters",
+      "inputs": ["zi", "ji"],
+      "combination": ["3057", "3099"]
+    },
+    "3059": {
+      "description": "hiragana letter su",
+      "group": "hiragana letters",
+      "inputs": ["su"],
+      "combination": []
+    },
+    "305a": {
+      "description": "hiragana letter zu",
+      "group": "combinable letters",
+      "inputs": ["zu"],
+      "combination": ["3059", "3099"]
+    },
+    "305b": {
+      "description": "hiragana letter se",
+      "group": "hiragana letters",
+      "inputs": ["se"],
+      "combination": []
+    },
+    "305c": {
+      "description": "hiragana letter ze",
+      "group": "combinable letters",
+      "inputs": ["ze"],
+      "combination": ["305b", "3099"]
+    },
+    "305d": {
+      "description": "hiragana letter so",
+      "group": "hiragana letters",
+      "inputs": ["so"],
+      "combination": []
+    },
+    "305e": {
+      "description": "hiragana letter zo",
+      "group": "combinable letters",
+      "inputs": ["zo"],
+      "combination": ["305d", "3099"]
+    },
+    "305f": {
+      "description": "hiragana letter ta",
+      "group": "hiragana letters",
+      "inputs": ["ta"],
+      "combination": []
+    },
+    "3060": {
+      "description": "hiragana letter da",
+      "group": "combinable letters",
+      "inputs": ["da"],
+      "combination": ["305f", "3099"]
+    },
+    "3061": {
+      "description": "hiragana letter ti",
+      "group": "hiragana letters",
+      "inputs": ["ti", "chi"],
+      "combination": []
+    },
+    "3062": {
+      "description": "hiragana letter di",
+      "group": "combinable letters",
+      "inputs": ["di"],
+      "combination": ["3061", "3099"]
+    },
+    "3063": {
+      "description": "hiragana letter small tu",
+      "group": "small letters",
+      "inputs": ["xtu", "xtsu"],
+      "combination": []
+    },
+    "3064": {
+      "description": "hiragana letter tu",
+      "group": "hiragana letters",
+      "inputs": ["tu", "tsu"],
+      "combination": []
+    },
+    "3065": {
+      "description": "hiragana letter du",
+      "group": "combinable letters",
+      "inputs": ["du"],
+      "combination": ["3064", "3099"]
+    },
+    "3066": {
+      "description": "hiragana letter te",
+      "group": "hiragana letters",
+      "inputs": ["te"],
+      "combination": []
+    },
+    "3067": {
+      "description": "hiragana letter de",
+      "group": "combinable letters",
+      "inputs": ["de"],
+      "combination": ["3066", "3099"]
+    },
+    "3068": {
+      "description": "hiragana letter to",
+      "group": "hiragana letters",
+      "inputs": ["to"],
+      "combination": []
+    },
+    "3069": {
+      "description": "hiragana letter do",
+      "group": "combinable letters",
+      "inputs": ["do"],
+      "combination": ["3068", "3099"]
+    },
+    "306a": {
+      "description": "hiragana letter na",
+      "group": "hiragana letters",
+      "inputs": ["na"],
+      "combination": []
+    },
+    "306b": {
+      "description": "hiragana letter ni",
+      "group": "hiragana letters",
+      "inputs": ["ni"],
+      "combination": []
+    },
+    "306c": {
+      "description": "hiragana letter nu",
+      "group": "hiragana letters",
+      "inputs": ["nu"],
+      "combination": []
+    },
+    "306d": {
+      "description": "hiragana letter ne",
+      "group": "hiragana letters",
+      "inputs": ["ne"],
+      "combination": []
+    },
+    "306e": {
+      "description": "hiragana letter no",
+      "group": "hiragana letters",
+      "inputs": ["no"],
+      "combination": []
+    },
+    "306f": {
+      "description": "hiragana letter ha",
+      "group": "hiragana letters",
+      "inputs": ["ha"],
+      "combination": []
+    },
+    "3070": {
+      "description": "hiragana letter ba",
+      "group": "combinable letters",
+      "inputs": ["ba"],
+      "combination": ["306f", "3099"]
+    },
+    "3071": {
+      "description": "hiragana letter pa",
+      "group": "combinable letters",
+      "inputs": ["pa"],
+      "combination": ["306f", "309a"]
+    },
+    "3072": {
+      "description": "hiragana letter hi",
+      "group": "hiragana letters",
+      "inputs": ["hi"],
+      "combination": []
+    },
+    "3073": {
+      "description": "hiragana letter bi",
+      "group": "combinable letters",
+      "inputs": ["bi"],
+      "combination": ["3072", "3099"]
+    },
+    "3074": {
+      "description": "hiragana letter pi",
+      "group": "combinable letters",
+      "inputs": ["pi"],
+      "combination": ["3072", "309a"]
+    },
+    "3075": {
+      "description": "hiragana letter hu",
+      "group": "hiragana letters",
+      "inputs": ["hu", "fu"],
+      "combination": []
+    },
+    "3076": {
+      "description": "hiragana letter bu",
+      "group": "combinable letters",
+      "inputs": ["bu"],
+      "combination": ["3075", "3099"]
+    },
+    "3077": {
+      "description": "hiragana letter pu",
+      "group": "combinable letters",
+      "inputs": ["pu"],
+      "combination": ["3075", "309a"]
+    },
+    "3078": {
+      "description": "hiragana letter he",
+      "group": "hiragana letters",
+      "inputs": ["he"],
+      "combination": []
+    },
+    "3079": {
+      "description": "hiragana letter be",
+      "group": "combinable letters",
+      "inputs": ["be"],
+      "combination": ["3078", "3099"]
+    },
+    "307a": {
+      "description": "hiragana letter pe",
+      "group": "combinable letters",
+      "inputs": ["pe"],
+      "combination": ["3078", "309a"]
+    },
+    "307b": {
+      "description": "hiragana letter ho",
+      "group": "hiragana letters",
+      "inputs": ["ho"],
+      "combination": []
+    },
+    "307c": {
+      "description": "hiragana letter bo",
+      "group": "combinable letters",
+      "inputs": ["bo"],
+      "combination": ["307b", "3099"]
+    },
+    "307d": {
+      "description": "hiragana letter po",
+      "group": "combinable letters",
+      "inputs": ["po"],
+      "combination": ["307b", "309a"]
+    },
+    "307e": {
+      "description": "hiragana letter ma",
+      "group": "hiragana letters",
+      "inputs": ["ma"],
+      "combination": []
+    },
+    "307f": {
+      "description": "hiragana letter mi",
+      "group": "hiragana letters",
+      "inputs": ["mi"],
+      "combination": []
+    },
+    "3080": {
+      "description": "hiragana letter mu",
+      "group": "hiragana letters",
+      "inputs": ["mu"],
+      "combination": []
+    },
+    "3081": {
+      "description": "hiragana letter me",
+      "group": "hiragana letters",
+      "inputs": ["me"],
+      "combination": []
+    },
+    "3082": {
+      "description": "hiragana letter mo",
+      "group": "hiragana letters",
+      "inputs": ["mo"],
+      "combination": []
+    },
+    "3083": {
+      "description": "hiragana letter small ya",
+      "group": "small letters",
+      "inputs": ["xya"],
+      "combination": []
+    },
+    "3084": {
+      "description": "hiragana letter ya",
+      "group": "hiragana letters",
+      "inputs": ["ya"],
+      "combination": []
+    },
+    "3085": {
+      "description": "hiragana letter small yu",
+      "group": "small letters",
+      "inputs": ["xyu"],
+      "combination": []
+    },
+    "3086": {
+      "description": "hiragana letter yu",
+      "group": "hiragana letters",
+      "inputs": ["yu"],
+      "combination": []
+    },
+    "3087": {
+      "description": "hiragana letter small yo",
+      "group": "small letters",
+      "inputs": ["xyo"],
+      "combination": []
+    },
+    "3088": {
+      "description": "hiragana letter yo",
+      "group": "hiragana letters",
+      "inputs": ["yo"],
+      "combination": []
+    },
+    "3089": {
+      "description": "hiragana letter ra",
+      "group": "hiragana letters",
+      "inputs": ["ra"],
+      "combination": []
+    },
+    "308a": {
+      "description": "hiragana letter ri",
+      "group": "hiragana letters",
+      "inputs": ["ri"],
+      "combination": []
+    },
+    "308b": {
+      "description": "hiragana letter ru",
+      "group": "hiragana letters",
+      "inputs": ["ru"],
+      "combination": []
+    },
+    "308c": {
+      "description": "hiragana letter re",
+      "group": "hiragana letters",
+      "inputs": ["re"],
+      "combination": []
+    },
+    "308d": {
+      "description": "hiragana letter ro",
+      "group": "hiragana letters",
+      "inputs": ["ro"],
+      "combination": []
+    },
+    "308e": {
+      "description": "hiragana letter small wa",
+      "group": "small letters",
+      "inputs": ["xwa"],
+      "combination": []
+    },
+    "308f": {
+      "description": "hiragana letter wa",
+      "group": "hiragana letters",
+      "inputs": ["wa"],
+      "combination": []
+    },
+    "3090": {
+      "description": "hiragana letter wi",
+      "group": "hiragana letters",
+      "inputs": ["wi"],
+      "combination": []
+    },
+    "3091": {
+      "description": "hiragana letter we",
+      "group": "hiragana letters",
+      "inputs": ["we"],
+      "combination": []
+    },
+    "3092": {
+      "description": "hiragana letter wo",
+      "group": "hiragana letters",
+      "inputs": ["wo"],
+      "combination": []
+    },
+    "3093": {
+      "description": "hiragana letter n",
+      "group": "hiragana letters",
+      "inputs": ["n"],
+      "combination": []
+    },
+    "3094": {
+      "description": "hiragana letter vu",
+      "group": "combinable letters",
+      "inputs": ["vu"],
+      "combination": ["3046", "3099"]
+    },
+    "3095": {
+      "description": "hiragana letter small ka",
+      "group": "small letters",
+      "inputs": ["xka"],
+      "combination": []
+    },
+    "3096": {
+      "description": "hiragana letter small ke",
+      "group": "small letters",
+      "inputs": ["xke"],
+      "combination": []
+    },
+    "3099": {
+      "description": "combining katakana-hiragana voiced sound mark",
+      "group": "voicing marks",
+      "inputs": ["\""],
+      "combination": []
+    },
+    "309a": {
+      "description": "combining katakana-hiragana semi-voiced sound mark",
+      "group": "voicing marks",
+      "inputs": ["*"],
+      "combination": []
+    },
+    "309b": {
+      "description": "katakana-hiragana voiced sound mark",
+      "group": "voicing marks",
+      "inputs": [],
+      "combination": ["0020", "3099"]
+    },
+    "309c": {
+      "description": "katakana-hiragana semi-voiced sound mark",
+      "group": "voicing marks",
+      "inputs": [],
+      "combination": ["0020", "309a"]
+    },
+    "309d": {
+      "description": "hiragana iteration mark",
+      "group": "iteration marks",
+      "inputs": [">"],
+      "combination": []
+    },
+    "309e": {
+      "description": "hiragana voiced iteration mark",
+      "group": "iteration marks",
+      "inputs": [],
+      "combination": ["309d", "3099"]
+    },
+    "309f": {
+      "description": "hiragana digraph yori",
+      "group": "hiragana digraph",
+      "inputs": [],
+      "combination": ["3088", "308a"]
+    },
+    "30fc": {
+      "description": "katakana-hiragana prolonged sound mark",
+      "group": "typographic symbols",
+      "inputs": ["-", "u", "o", "e"],
+      "combination": []
+    }, 
+    "ff70": {
+      "description": "halfwidth katakana-hiragana prolonged sound mark",
+      "group": "typographic symbols",
+      "inputs": ["_"],
+      "combination": []
+    },
+    "3002": {
+      "description": "period",
+      "group": "typographic symbols",
+      "inputs": ["."],
+      "combination": []
+    },
+    "3001": {
+      "description": "comma",
+      "group": "typographic symbols",
+      "inputs": [","],
+      "combination": []
+    },
+    "300c": {
+      "description": "opening quotation mark",
+      "group": "typographic symbols",
+      "inputs": ["["],
+      "combination": []
+    },
+    "300d": {
+      "description": "closing quotation mark",
+      "group": "typographic symbols",
+      "inputs": ["]"],
+      "combination": []
+    },
+    "30fb": {
+      "description": "foreign words separator",
+      "group": "typographic symbols",
+      "inputs": ["~"],
+      "combination": []
+    }
+  },
+
+  "sources": {
+    "hiragana": "https://www.unicode.org/charts/PDF/U3040.pdf",
+    "kana extended-a": "https://www.unicode.org/charts/PDF/U1B100.pdf",
+    "kana extended-b": "https://www.unicode.org/charts/PDF/U1AFF0.pdf",
+    "kana supplement": "https://www.unicode.org/charts/PDF/U1AFF0.pdf",
+    "small kana extension": "https://www.unicode.org/charts/PDF/U1B130.pdf",
+    "katakana": "https://www.unicode.org/charts/PDF/U30A0.pdf",
+    "prolonged sound mark": "https://en.wikipedia.org/wiki/Ch%C5%8Donpu"
+  }
+}
