@@ -69,11 +69,16 @@ textarea.addEventListener('keydown', (event: KeyboardEvent) => {
 })
 
 function generateRandomHiragana(): string {
-    const wordSize = { min: 8, max: 20 }
     const chars: string[] = Kana.HIRAGANA_CODES
-    const el = document.querySelector('#generated') as HTMLElement
+
+    if (chars.length === 0) {
+        console.error('Unable to generate hiragana - char array is empty')
+        return ''
+    }
 
     let text = ''
+    const wordSize = { min: 8, max: 20 }
+    const el = document.querySelector('#generated') as HTMLElement
 
     for (let i = wordSize.min; i < wordSize.max + 1; i++) {
         let rand = Math.floor(Math.random() * chars.length)
