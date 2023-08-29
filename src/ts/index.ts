@@ -5,9 +5,6 @@ import { Kana, HiraganaChar } from './kana.js'
 
 await preload()
 
-// Peek hiragana map
-DEBUG && console.log(Object.entries(Kana.HIRAGANA).map(([key, value]) => `${key} = ${HiraganaChar.hex2symbol(value)}`))
-
 
 const textarea = document.querySelector('#textarea') as HTMLElement
 const text: HiraganaChar[] = []
@@ -72,7 +69,7 @@ function generateRandomHiragana(): string {
     const chars: string[] = Kana.HIRAGANA_CODES
 
     if (chars.length === 0) {
-        console.error('Unable to generate hiragana - char array is empty')
+        console.error(`Unable to generate hiragana - char array is empty`)
         return ''
     }
 

@@ -1,6 +1,6 @@
-async function fetchFile(path: string) {
-    const response = await fetch(path)
-    const json = await response.json()
+async function fetchFile(path: string): Promise<any> {
+    const response: Response = await fetch(path)
+    const json: any = await response.json()
     return json
 }
 
