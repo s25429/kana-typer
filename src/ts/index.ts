@@ -1,25 +1,21 @@
 import { DEBUG } from './config.js'
 import preload from './preload.js'
-import { Kana, HiraganaChar } from './kana.js'
+import { KeyManager, Kana, HiraganaChar } from './kana.js'
 
 
 await preload()
 
 
-const textarea = document.querySelector('#textarea') as HTMLElement
+const textarea = document.querySelector('#kana-container .typer') as HTMLElement
 const text: HiraganaChar[] = []
 const generated: string = generateRandomHiragana()
 
-const keyCode = {
-    BACKSPACE: 'Backspace',
-    C: 'KeyC'
-}
 
 textarea.addEventListener('keydown', (event: KeyboardEvent) => {
     DEBUG && console.log(event)
 
     // Delete last romaji character
-    if (event.code === keyCode.BACKSPACE) {
+    if (KeyManager.isKey('bs', event)) {
         if (text.length === 0)
             return
 
@@ -31,7 +27,7 @@ textarea.addEventListener('keydown', (event: KeyboardEvent) => {
     }
 
     // Clear whole textarea
-    else if (event.code === keyCode.C && event.ctrlKey) {
+    else if (KeyManager.isKey('ctrl-c', event)) {
         if (text.length === 0)
             return
         
@@ -40,7 +36,7 @@ textarea.addEventListener('keydown', (event: KeyboardEvent) => {
     }
 
     // Manage non-function keys
-    else if (event.key.length < 2) {
+    else if (KeyManager.isKey('non-function-keys', event)) {
         let key = event.key.toLowerCase()
 
         // No items or last item cannot be changed with new chars
@@ -50,6 +46,7 @@ textarea.addEventListener('keydown', (event: KeyboardEvent) => {
             text[text.length - 1].append(key)
     }
 
+    // Print chars
     textarea.innerHTML = ''
     for (let i = 0; i < text.length; i++) {
         const char: HiraganaChar = text[i]
@@ -60,7 +57,8 @@ textarea.addEventListener('keydown', (event: KeyboardEvent) => {
         }
 
         // Color hiragana letters depending if they are correct
-        const color: string = char.value === generated[i] ? 'green' : 'red'
+        // const color: string = char.value === generated[i] ? 'green' : 'red'
+        const color: string = true ? 'green' : 'red'
         textarea.innerHTML += `<span style="color:${color}">${char.value}</span>`
     }
 })
@@ -75,7 +73,7 @@ function generateRandomHiragana(): string {
 
     let text = ''
     const wordSize = { min: 8, max: 20 }
-    const el = document.querySelector('#generated') as HTMLElement
+    const el = document.querySelector('#kana-container .text') as HTMLElement
 
     for (let i = wordSize.min; i < wordSize.max + 1; i++) {
         let rand = Math.floor(Math.random() * chars.length)

@@ -45,3 +45,5 @@ export type KanaFilters = {
     inputs       : string[], 
     combinations : string[], 
 }
+
+export type KeyCode = string

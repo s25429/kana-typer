@@ -1,6 +1,33 @@
 import { DEBUG } from './config.js'
 import { fetchFile } from './fs.js'
-import { JSO, KanaUnicodeJSO, KanaUnicodeData, KanaArgs, KanaFilters, JSONValue } from './types.js'
+import { JSO, KanaUnicodeJSO, KanaUnicodeData, KanaArgs, KanaFilters, JSONValue, KeyCode } from './types.js'
+
+
+class KeyManager {
+    public static key: JSO<KeyCode, string> = {
+        BS: 'Backspace',
+        C: 'KeyC',
+    }
+
+    private static keys: {
+        [uid: string]: (event: KeyboardEvent) => boolean
+    } = {}
+
+    public static addKey(uid: string, condition: (event: KeyboardEvent) => boolean) {
+        KeyManager.keys[uid] = condition
+        return KeyManager
+    }
+
+    public static removeKey(uid: string): KeyManager {
+        const { [uid]: _, ...newKeys } = KeyManager.keys
+        KeyManager.keys = newKeys
+        return KeyManager
+    }
+
+    public static isKey(uid: string, event: KeyboardEvent): boolean {
+        return KeyManager.keys[uid](event)
+    }
+}
 
 
 class KanaLoader {
@@ -316,4 +343,4 @@ class HiraganaChar extends KanaChar {
 }
 
 
-export { Kana, KanaLoader, HiraganaChar }
+export { KeyManager, Kana, KanaLoader, HiraganaChar }
