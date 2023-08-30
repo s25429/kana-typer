@@ -40,6 +40,8 @@ Provides a way to study and practice japanese kana characters.
     ```bash
     npm install --save-dev typescript
     npm install --save-dev sass
+    npm install -g sass
+    sass src/scss/:src/css/
     ```
 
 ## Usage

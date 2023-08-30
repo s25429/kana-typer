@@ -1,9 +1,11 @@
 # Distribution / packaging
 node_modules/
 src/js/
+src/css/
 .sass-cache/
 
 # Files
+*.js
 *.css
 *.css.map
 *.sass.map
