@@ -25,6 +25,28 @@
 </head>
 <body>
     <main id="kana-container">
+        <div class="timer">_</div>
+        <div id="panel">
+            <button class="start"><abbr title="One minute to test typing speed">Start</abbr></button>
+            <button class="test"><abbr title="No timer, CTRL+V to exit">Test</abbr></button>
+            
+            <details>
+                <summary>Instruction</summary>
+                <span>Upon pressing a button, upper box will show kana. Click on lower box until it is selected and then start typing in romaji.</span>
+                <ul>
+                    <li>Backspace - erases characters one latin character at a time</li>
+                    <li>Delete - clears whole lower box</li>
+                    <li>CTRL + C - copies kana in lower box</li>
+                    <li>CTRL + V - returns to the panel screen</li>
+                </ul>
+            </details>
+
+            <details>
+                <summary>Stats</summary>
+                <ul class="stats">
+                </ul>
+            </details>
+        </div>
         <div id="source"></div>
         <div id="target" tabindex="0"></div>
     </main>

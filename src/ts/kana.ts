@@ -6,8 +6,9 @@ import { JSO, KanaUnicodeJSO, KanaUnicodeData, KanaArgs, KanaFilters, JSONValue,
 class KeyManager {
     public static key: JSO<KeyCode, string> = {
         BACKSPACE: 'Backspace',
+        DELETE: 'Delete',
         C: 'KeyC',
-        DELETE: 'Delete'
+        V: 'KeyV',
     }
 
     private static keys: {

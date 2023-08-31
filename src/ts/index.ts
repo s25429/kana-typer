@@ -1,6 +1,7 @@
 import { DEBUG } from './config.js'
 import preload from './preload.js'
 import { KeyManager, Kana, HiraganaChar } from './kana.js'
+import { JSO } from './types.js'
 
 
 await preload()
@@ -17,14 +18,89 @@ switch (getScriptVersion()) {
 function ver1() {
     const source = document.querySelector('#kana-container #source') as HTMLElement
     const target = document.querySelector('#kana-container #target') as HTMLElement
+    const panel = document.querySelector('#kana-container #panel') as HTMLElement
+    const startButton = panel.querySelector('button.start') as HTMLElement
+    const stats = panel.querySelector('.stats') as HTMLElement
+    const timer = document.querySelector('#kana-container .timer') as HTMLElement
     
-    const sourceText: HiraganaChar[] = generateRandomHiragana({ max: 200 })
-    const targetText: HiraganaChar[] = []
+    
+    let sourceText: HiraganaChar[] = []
+    let targetText: HiraganaChar[] = []
+    let timeLeft = 60
+    let timerInterval: number | null = null
+    let statistics: {
+        'charactersPerMinute': number,
+        'characterAccuracy': number,
+        'kanaType': 'hiragana' | 'katakana',
+        'correctCharacters': number,
+        'incorrectCharacters': number,
+        'timeElapsed': number,
+    }
 
 
-    source.textContent = sourceText.map(char => char.value).join('')
+    startButton.addEventListener('click', start)
 
-    target.addEventListener('keydown', (event: KeyboardEvent) => {
+
+    function stop() {
+        panel.style.display = 'block'
+        timer.style.visibility = 'hidden'
+        source.style.display = 'none'
+
+        target.removeEventListener('keydown', targetKeyDownEventListener)
+
+        if (timerInterval) {
+            clearInterval(timerInterval)
+            timerInterval = null
+        }
+
+        // Count statistics
+        for (let i = 0; i < targetText.length; i++) {
+            if (targetText[i].value === sourceText[i].value)
+                statistics.correctCharacters++
+            else
+                statistics.incorrectCharacters++
+            statistics.charactersPerMinute++
+        }
+        statistics.characterAccuracy = parseFloat((statistics.correctCharacters * 100 / statistics.charactersPerMinute).toFixed(1))
+
+        stats.innerHTML = `
+            <li>Characters Per Minute: ${statistics.charactersPerMinute}</li>
+            <li>Character Accuracy: ${statistics.characterAccuracy}%</li>
+            <li>Correct Characters: ${statistics.correctCharacters}</li>
+            <li>Incorrect Characters: ${statistics.incorrectCharacters}</li>
+            <li>Time Elapsed: ${statistics.timeElapsed}s</li>
+            <li>Kana Type: ${statistics.kanaType}</li>
+        `
+    }
+
+    function start() {
+        sourceText = generateRandomHiragana({ max: 200 })
+        targetText.length = 0
+        timeLeft = 60
+        
+        panel.style.display = 'none'
+        timer.style.visibility = 'visible'
+        source.style.display = 'block'
+        target.innerHTML = ''
+        timer.innerHTML = `${timeLeft}`
+
+        updateSourceKana()
+        target.addEventListener('keydown', targetKeyDownEventListener)
+
+        if (!timerInterval)
+            timerInterval = setInterval(updateTimer, 1000) as number
+
+        statistics = {
+            charactersPerMinute: 0,
+            characterAccuracy: 0,
+            kanaType: 'hiragana',
+            correctCharacters: 0,
+            incorrectCharacters: 0,
+            timeElapsed: 0,
+        }
+    }
+
+    function targetKeyDownEventListener(event: KeyboardEvent) {
         DEBUG && console.debug(event, '\n', targetText)
 
         // Delete last romaji character
@@ -64,6 +140,10 @@ function ver1() {
             }
         }
 
+        else if (KeyManager.isKey('ctrl+v', event)) {
+            stop()
+        }
+
         // Manage non-function keys
         else if (KeyManager.isKey('non-function-keys', event)) {
             let key = event.key.toLowerCase()
@@ -87,11 +167,48 @@ function ver1() {
             }
 
             // Color hiragana letters depending if they are correct
-            const color: string = char.value === sourceText[i].value ? 'green' : 'red'
+            const color: string = char.value === sourceText[i].value ? 'lime' : 'red'
             target.innerHTML += `<span style="color:${color}">${char.value}</span>`
         }
-    })
 
+        let position = 0
+        targetText.forEach((char: HiraganaChar) => {
+            if (char.isFinal)
+                position++
+            else
+                return
+        })
+
+        updateSourceKana(position)
+    }
+
+    function updateTimer() {
+        if (--timeLeft < 0) {
+            stop()
+            timer.innerHTML = '_'
+            return
+        } 
+        else {
+            statistics.timeElapsed++
+        }
+
+        let attr = ''
+        if (timeLeft < 10)
+            attr = 'style="color: red;"'
+        else if (timeLeft < 30)
+            attr = 'style="color: yellow;"'
+
+        timer.innerHTML = `<span ${attr}>${timeLeft}</span>`
+    }
+
+    function updateSourceKana(position: number = 0) {
+        source.innerHTML = sourceText.map((char: HiraganaChar, index: number) => {
+            if (index > position)                            return `<span style="color: gray">${char.value}</span>`
+            else if (index === position)                     return `<span>${char.value}</span>`
+            else if (char.value === targetText[index].value) return `<span style="color: lime">${char.value}</span>`
+            else                                             return `<span style="color: red">${char.value}</span>`
+        }).join('')
+    }
 
     function generateRandomHiragana(
         { min, max }
@@ -106,7 +223,6 @@ function ver1() {
         }
 
         let hiragana: HiraganaChar[] = []
-        // const wordSize = { min: 8, max: 20 }
 
         for (let i = (min ?? 1); i < (max ?? 2) + 1; i++) {
             let rand = Math.floor(Math.random() * romajiChars.length)

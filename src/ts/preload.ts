@@ -16,6 +16,7 @@ export default async function(): Promise<void> {
         .addKey('bs', (event) => event.code === KeyManager.key.BACKSPACE)
         .addKey('dl', (event) => event.code === KeyManager.key.DELETE)
         .addKey('ctrl+c', (event) => event.code === KeyManager.key.C && event.ctrlKey)
+        .addKey('ctrl+v', (event) => event.code === KeyManager.key.V && event.ctrlKey)
 
     DEBUG && console.debug('Hiragana:', Kana.HIRAGANA)
 

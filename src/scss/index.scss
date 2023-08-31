@@ -41,19 +41,52 @@ main {
     gap: 2rem;
     justify-items: center;
 
+    .timer {
+        visibility: hidden;
+    }
+
     #source, 
-    #target {
+    #target,
+    #panel {
         width: min(90%, 30rem);
         height: min(40vh, 18rem);
 
-        padding: .3em;
+        padding: .3em .5em;
 
         border: 1px solid #eee;
+    }
+
+    #source {
+        display: none;
     }
 
     #target:focus, 
     #target:focus-within {
         outline: 2px solid cyan;
+    }
+
+    #panel {
+        overflow: auto;
+
+        summary {
+            margin: 1em 0 .5em 0; 
+
+            font-weight: bold;
+        }
+    }
+}
+
+button {
+    padding: .3em .7em;
+
+    color: #333;
+    background-color: #eee;
+    border: none;
+
+    cursor: pointer;
+
+    abbr {
+        cursor: help;
     }
 }
 
