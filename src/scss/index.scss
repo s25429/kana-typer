@@ -10,24 +10,74 @@ body {
     display: grid;
     align-content: center;
 
+    color: #eee;
+    background-color: #333;
+
     font-family: 'Noto Sans JP', sans-serif;
 }
 
-body::after {
-    content: '';
+// body::after {
+//     content: '';
 
-    position: absolute;
-    top: 0;
-    left: 50%;
+//     position: absolute;
+//     top: 0;
+//     left: 50%;
 
-    width: 1px;
-    height: 100vh;
+//     width: 1px;
+//     height: 100vh;
 
-    background-color: black;
+//     background-color: black;
 
-    transform: translateX(-50%);
-}
+//     transform: translateX(-50%);
+// }
 
 main {
-    border: 1px solid red;
+    // border: 1px solid red;
+
+    overflow: hidden;
+
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    justify-items: center;
+
+    #source, 
+    #target {
+        width: min(90%, 30rem);
+        height: min(40vh, 18rem);
+
+        padding: .3em;
+
+        border: 1px solid #eee;
+    }
+
+    #target:focus, 
+    #target:focus-within {
+        outline: 2px solid cyan;
+    }
 }
+
+
+// .text {
+//     --font-size: 4rem;
+//     --initial-pos: calc(50% - (var(--font-size) / 2));
+
+//     height: 6rem;
+
+//     font-size: var(--font-size);
+//     white-space: nowrap;
+
+//     border: 1px solid blue;
+
+//     transform: translateX(var(--initial-pos));
+// }
+
+// .typer {
+//     --initial-pos: calc(50% - .5ex);
+
+//     font-size: 2rem;
+
+//     border: 1px solid green;
+
+//     transform: translateX(var(--initial-pos));
+// }

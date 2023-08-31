@@ -21,28 +21,17 @@
 
     <link rel="stylesheet" href="./../src/css/index.css">
 
-    <script type="module" src="./../src/js/index.js"></script>
+    <script type="module" src="./../src/js/index.js?version=1"></script>
 </head>
 <body>
-    <!-- <div id="generated" style="width: 300px; height: 200px; border: 1px solid black;"></div>
-    <br>
-    <div id="textarea" tabindex="0" style="width: 300px; height: 200px; border: 1px solid black;"></div> -->
-
     <main id="kana-container">
-        <div class="text"></div>
-        <div class="typer" tabindex="0">type</div>
+        <div id="source"></div>
+        <div id="target" tabindex="0"></div>
     </main>
 
-    <!-- <script>
-        const main = document.querySelector('main')
-        const text = document.querySelector('.text')
-
-        const MAX = 122
-        const MIN = 97
-        const LENGTH = 50
-
-        for (let i = 0; i < LENGTH; i++)
-            text.textContent += String.fromCharCode((Math.random() * (MAX - MIN + 1) + MIN))
-    </script> -->
+    <!-- <main id="kana-container">
+        <div class="text"></div>
+        <div class="typer" tabindex="0">type</div>
+    </main> -->
 </body>
 </html>

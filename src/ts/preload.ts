@@ -13,10 +13,11 @@ export default async function(): Promise<void> {
 
     KeyManager
         .addKey('non-function-keys', (event) => event.key.length < 2)
-        .addKey('bs', (event) => event.code === KeyManager.key.BS)
-        .addKey('ctrl-c', (event) => event.code === KeyManager.key.C && event.ctrlKey)
+        .addKey('bs', (event) => event.code === KeyManager.key.BACKSPACE)
+        .addKey('dl', (event) => event.code === KeyManager.key.DELETE)
+        .addKey('ctrl+c', (event) => event.code === KeyManager.key.C && event.ctrlKey)
 
-    DEBUG && console.log('Hiragana:', Kana.HIRAGANA)
+    DEBUG && console.debug('Hiragana:', Kana.HIRAGANA)
 
     return new Promise<void>((resolve, reject) => !errors ? resolve() : reject('Something went wrong in preload.js'))
 }

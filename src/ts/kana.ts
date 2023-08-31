@@ -5,8 +5,9 @@ import { JSO, KanaUnicodeJSO, KanaUnicodeData, KanaArgs, KanaFilters, JSONValue,
 
 class KeyManager {
     public static key: JSO<KeyCode, string> = {
-        BS: 'Backspace',
+        BACKSPACE: 'Backspace',
         C: 'KeyC',
+        DELETE: 'Delete'
     }
 
     private static keys: {
@@ -124,6 +125,45 @@ class Kana {
 
     public static get KATAKANA_CODES(): string[] {
         return [...new Set(Object.values(Kana.katakanaMap))]
+    }
+
+    public static get HIRAGANA_INPUTS(): string[] {
+        return [...new Set(Object.keys(Kana.hiraganaMap))]
+    }
+
+    public static get KATAKANA_INPUTS(): string[] {
+        return [...new Set(Object.keys(Kana.katakanaMap))]
+    }
+
+    public static get ALL_HIRAGANA_TEST(): string[] {
+        return [
+            'a',   'i',   'u',  'e',  'o',  'n',
+           'ka',  'ki',  'ku', 'ke', 'ko', 
+           'ga',  'gi',  'gu', 'ge', 'go', 
+           'sa', 'shi',  'su', 'se', 'so',
+           'za',  'ji',  'zu', 'ze', 'zo',
+           'ta', 'chi', 'tsu', 'te', 'to',
+           'da',               'de', 'do',
+           'na',  'ni',  'nu', 'ne', 'no',
+           'ha',  'hi',  'fu', 'he', 'ho',
+           'ba',  'bi',  'bu', 'be', 'bo',
+           'pa',  'pi',  'pu', 'pe', 'po',
+           'ma',  'mi',  'mu', 'me', 'mo',
+           'ya',         'yu',       'yo',
+           'ra',  'ri',  'ru', 're', 'ro',
+           'wa',                     'wo',
+          'kya',        'kyu',      'kyo',
+          'gya',        'gyu',      'gyo',
+          'sha',        'shu',      'sho',
+           'ja',         'ju',       'jo',
+          'cha',        'chu',      'cho',
+          'nya',        'nyu',      'nyo',
+          'hya',        'hyu',      'hyo',
+          'bya',        'byu',      'byo',
+          'pya',        'pyu',      'pyo',
+          'mya',        'myu',      'myo',
+          'rya',        'ryu',      'ryo',
+      ]
     }
 
     public static hiragana(key: string): string | null {
