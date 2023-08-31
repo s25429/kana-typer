@@ -117,7 +117,7 @@ For now contributions will not be accepted due to project's early development.
 
 ## License 
 
-This project is licensed under the [MIT License](https://mit-license.org/).
+This project is licensed under the [MIT License](./LICENSE).
 
 ## Authors
 
