@@ -1,18 +1,16 @@
 {
-  "name": "kana-typer",
-  "version": "1.0.0",
-  "description": "```\r npm init -y\r npm install --save-dev typescript\r npx tsc --init\r ```",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "tsc": "tsc --watch",
-    "cleanup-sass": "mv ./src/css/*.scss ./src/css/*.css.map ./src/scss/"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "sass": "^1.66.1",
-    "typescript": "^5.2.2"
-  }
+    "name": "kana-typer",
+    "version": "0.1.0",
+    "description": "Supportive program in learning japanese writing system.",
+    "main": "index.js",
+    "scripts": {
+        "tsc": "tsc --watch"
+    },
+    "keywords": [],
+    "author": "Cezary Ciślak <cezary.cislak@gmail.com>",
+    "license": "MIT",
+    "devDependencies": {
+        "sass": "^1.66.1",
+        "typescript": "^5.2.2"
+    }
 }
