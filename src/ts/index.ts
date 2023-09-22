@@ -4,6 +4,9 @@ import { KeyManager, Kana, HiraganaChar } from './kana.js'
 import { JSO } from './types.js'
 
 
+// TODO: when N should be typed and N is typed, we are not promped to type the following character
+
+
 await preload()
 
 
