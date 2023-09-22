@@ -3,6 +3,8 @@
 > Build Version: N/a | Dev Version: 0.1.0 \
 > Supportive program in learning japanese writing system.
 
+## WARNING! `this readme is deprecated. It is for versions 0.1`
+
 ## Table of Contents
 
 - [Overview](#overview)
