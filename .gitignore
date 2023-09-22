@@ -8,8 +8,8 @@ pnpm-debug.log*
 lerna-debug.log*
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
+# .vscode/*
+# !.vscode/extensions.json
 .idea
 .DS_Store
 *.suo
@@ -20,16 +20,16 @@ lerna-debug.log*
 
 # Distribution / packaging
 node_modules/
-src/js/
-src/css/
+# src/js/
+# src/css/
 .sass-cache/
 dist
 dist-ssr
 *.local
 
 # Files
-*.js
-*.css
-*.css.map
-*.sass.map
-*.scss.map
+# *.js
+# *.css
+# *.css.map
+# *.sass.map
+# *.scss.map
