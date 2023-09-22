@@ -28,6 +28,7 @@ dist-ssr
 *.local
 
 # Files
+backup/
 # *.js
 # *.css
 # *.css.map
