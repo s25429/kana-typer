@@ -29,6 +29,7 @@ dist-ssr
 
 # Files
 backup/
+design.png
 # *.js
 # *.css
 # *.css.map
