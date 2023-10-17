@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import store from './redux/store'
 
 import Counter from './components/Counter';
+import HiraganaTest from './components/HiraganaTest';
 
 // https://github.com/vitejs/vite-plugin-react/tree/main/packages/plugin-react#consistent-components-exports
 
@@ -15,6 +16,7 @@ function App() {
     return (
         <Provider store={store}>
             <Counter />
+            <HiraganaTest />
         </Provider>
     )
 }
