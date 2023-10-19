@@ -7,19 +7,9 @@ interface AddOptions {
     skipValidation : boolean
 }
 
-interface RemoveOptions {
-    amount        : number
-    parseToRomaji : boolean
-}
-
 
 const initialAddOptions: AddOptions = {
     skipValidation: false,
-}
-
-const initialRemoveOptions: RemoveOptions = {
-    amount: 1,
-    parseToRomaji: true,
 }
 
 
@@ -50,39 +40,6 @@ function useHiragana(): [string, { [key: string]: Function }] {
         setText(prevText => prevText.slice(0, offset) + hiraganaSlice)
     }
 
-    // const remove = ({ amount, parseToRomaji }: RemoveOptions = initialRemoveOptions): string => {
-    //     let newOffset = offset
-    //     let newSizes = [...sizes]
-    //     let newText = text
-    //     let diff = ''
-
-    //     for (let i = 0; i < amount; i++) {
-    //         let char = newText.slice(-1)
-
-    //         if (parseToRomaji && isRomaji(char)) {
-    //             let unicode = symbolToUnicodeHex(char)
-    //             let romaji = HIRAGANA.unicode[unicode]?.inputs[0] ?? null
-
-    //             if (romaji === null) console.error('No idea how this could happen...')
-
-    //             newText = newText.slice(0, -1) + romaji.slice(0, -1)
-    //             diff += romaji.slice(-1)
-
-    //             newOffset -= 1
-    //             newSizes.pop()
-    //         }
-    //         else {
-    //             newText = newText.slice(0, -1)
-    //             diff += char
-    //         }
-    //     }
-
-    //     setOffset(newOffset)
-    //     setSizes(newSizes)
-    //     setText(newText)
-
-    //     return diff
-    // }
     const remove = (): string => {
         let buffer = ''
         let sliced = text.slice(-1)
@@ -139,12 +96,24 @@ function useHiragana(): [string, { [key: string]: Function }] {
         String.fromCodePoint(parseInt(hex || '25a1', 16))
     )
 
+    /**
+     * Converts unicode symbol to its hex representation.
+     * If symbol was impossible to convert, hex "25a1" is returned.
+     */
     const symbolToUnicodeHex = (symbol: string): string => (
         symbol.codePointAt(0)?.toString(16) ?? '25a1'
     )
 
-    const isRomaji = (text: string) => !/[^a-zA-Z]/.test(text)
+    /**
+     * Checks if all characters in text are of latin origin.
+     */
+    const isRomaji = (text: string): boolean => !/[^a-zA-Z]/.test(text)
 
+    /**
+     * Parses given input in romaji if it contains a double consonant.
+     * @param romajiSlice - text in romaji, e.g. kka
+     * @returns double consonant broken down into kana characters in romaji or null if not applicable.
+     */
     const parseSokuon = (romajiSlice: string): string[] | null => (
         romajiSlice.length < 3 || 
         romajiSlice.length > 4 ||
@@ -154,8 +123,13 @@ function useHiragana(): [string, { [key: string]: Function }] {
             : ['xtsu', romajiSlice.slice(1)]
     )
 
+    /**
+     * Parses given input in romaji if it contains a yoon.
+     * @param romajiSlice - text in romaji, e.g. kya
+     * @returns yoon broken down into kana characters in romaji or null if not applicable.
+     */
     const parseYoon = (romajiSlice: string): string[] | null => {
-        const vowels = ['a', 'u', 'e', 'o'] // TODO: take this from some database too
+        const vowels = ['a', 'u', 'e', 'o'] // TODO: take this from some database too, also probably will not work for katakana
         const letters = romajiSlice.split('')
         const shch = letters.slice(0, 2).join('')
         const last = letters[letters.length - 1]
@@ -173,6 +147,11 @@ function useHiragana(): [string, { [key: string]: Function }] {
         return null
     }
 
+    /**
+     * Parses given input in romaji if it contains double consonant and yoon.
+     * @param romajiSlice - text in romaji, e.g. kkya
+     * @returns double consonant and yoon broken down into kana characters in romaji or null if not applicable.
+     */
     const parseYoonWithSokuon = (romajiSlice: string): string[] | null => {
         const yoon = parseYoon(romajiSlice.slice(1))
         if (yoon === null)
@@ -185,18 +164,30 @@ function useHiragana(): [string, { [key: string]: Function }] {
         return [...sokuon, yoon[1]]
     }
 
-    const parseStandardKana = (romajiSlice: string): string[] | null => (
+    /**
+     * Parses given input in romaji only if this input and unicode corresponding to it is available in database. 
+     * Such input only, at most, accepts kana that is comprised of only one unicode character, but can be less dependant on given database content.
+     * To see what kana is comprised of only one unicode character, seek help on the internet.
+     * @param romajiSlice - text in romaji, e.g. ka
+     * @returns romaji in array (so that it follows structure of other parse functions) or null if not applicable.
+     */
+    const parseAvailableKana = (romajiSlice: string): string[] | null => (
         validRomaji(romajiSlice) || validUnicode(romajiSlice) 
             ? [romajiSlice] 
             : null
     )
 
+    /**
+     * Validates given text if it is comprised of valid romaji.
+     * @param romajiSlice - text in romaji, e.g. ka, kka, kya, etc.
+     * @returns romaji transformed into proper kana characters or null if romaji was invalid.
+     */
     const validate = (romajiSlice: string): string | null => {
         // Parses slice into proper romaji inputs or leaves it as it was passed
         const inputs = parseYoonWithSokuon(romajiSlice) ?? 
                        parseYoon(romajiSlice) ?? 
                        parseSokuon(romajiSlice) ??
-                       parseStandardKana(romajiSlice)
+                       parseAvailableKana(romajiSlice)
 
         return inputs?.reduce((acc: string, input: string) => (
             acc + unicodeHexToSymbol(HIRAGANA.input[input])
