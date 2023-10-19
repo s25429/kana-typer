@@ -15,16 +15,16 @@ type KanaUnicodeData = {
 } 
 
 interface KanaState {
-    romaji  : Romaji[]
+    romaji  : { [key : Romaji]        : string }
     unicode : { [key : UnicodeNumber] : KanaUnicodeData }
     input   : { [key : Romaji]        : UnicodeNumber   }
 }
 
 
 const initialState: KanaState = {
-    romaji: [],
+    romaji: {},
     unicode: {},
-    input: {}
+    input: {},
 }
 
 export const hiraganaSlice = createSlice({
@@ -32,19 +32,27 @@ export const hiraganaSlice = createSlice({
     initialState,
     reducers: {
         load: (state) => {
-            let romajiArrays = Object.values(RomajiMap.hiragana.used)
-            state.romaji = [ ...romajiArrays.flat(1) ]
+            // let romajiArrays = Object.values(RomajiMap.hiragana.used)
+            // state.romaji = [ ...romajiArrays.flat(1) ]
+            let romajiObj = {}
+            Object.entries(RomajiMap.hiragana.used)
+                .forEach(([group, inputs]: [string, Romaji[]]) => {
+                    inputs.length && inputs.forEach((input: Romaji) => {
+                        romajiObj = { ...romajiObj, [input]: group }
+                    })
+                })
+            state.romaji = { ...romajiObj }
 
             let unicodeObj = UnicodeMap.hiragana
             state.unicode = { ...unicodeObj }
 
-            let inputObj: KanaState['input'] = {}
+            let inputObj = {}
             Object.entries(UnicodeMap.hiragana)
-                .map(([code, data]: [UnicodeNumber, KanaUnicodeData]) => (
-                    data.inputs.length === 0 || data.inputs.forEach((input: Romaji) => {
+                .forEach(([code, data]: [UnicodeNumber, KanaUnicodeData]) => {
+                    data.inputs.length && data.inputs.forEach((input: Romaji) => {
                         inputObj = { ...inputObj, [input]: code }
                     })
-                ))
+                })
             state.input = { ...inputObj }
         },
     },

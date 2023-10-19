@@ -8,14 +8,16 @@ function HiraganaTest() {
     const HIRAGANA = useAppSelector((state) => state.hiragana)
     const dispatch = useAppDispatch()
 
-    const [hiraganaText, hiraganaFn] = useHiragana()
+    const [hiragana, setHiragana] = useHiragana()
 
     useEffect(() => { dispatch(loadHiragana()) }, [])
 
+    // console.log('siema'.slice(0, -1))
+
     return (<>
-        <div>{hiraganaText}</div>
-        <button onClick={() => hiraganaFn.add('a')}>+</button>
-        <button onClick={() => hiraganaFn.remove()}>-</button>
+        <div>{hiragana}</div>
+        <button onClick={() => setHiragana.add('kka')}>+</button>
+        <button onClick={() => setHiragana.remove()}>-</button>
     </>)
 }
 
