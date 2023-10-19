@@ -12,7 +12,9 @@ function HiraganaTest() {
 
     useEffect(() => { dispatch(loadHiragana()) }, [])
 
-    // console.log('siema'.slice(0, -1))
+    // console.log([1, 2, 3].slice(0, -1), [1, 2, 3].slice(-1), [].slice(-1))
+    // console.log([1, 2, 3].slice(0, -1))
+    console.log(['jeden', 'dwa', 'trzy'].slice(-1).pop()?.slice(0, -1))
 
     return (<>
         <div>{hiragana}</div>

@@ -3,6 +3,14 @@ import { useAppSelector, useAppDispatch } from '../redux/hooks'
 import { load as loadHiragana } from '../redux/slices/hiragana'
 
 
+type UseHiragana = [
+    string,
+    {
+        add: (chars: string, options?: AddOptions) => void
+        remove: () => string
+    },
+]
+
 interface AddOptions {
     skipValidation : boolean
 }
@@ -13,63 +21,58 @@ const initialAddOptions: AddOptions = {
 }
 
 
-function useHiragana(): [string, { [key: string]: Function }] {
+function useHiragana(): UseHiragana {
     const HIRAGANA = useAppSelector((state) => state.hiragana)
     const dispatch = useAppDispatch()
 
     // TODO: maybe some hooks can be useRef?
-    const [offset, setOffset] = useState(0)
     const [text, setText] = useState('')
     const [sizes, setSizes] = useState<number[]>([]) // TODO: using this with useEffect ONLY with passing useMemo as dependency
+    const [romaji, setRomaji] = useState<string[]>([])
 
 
-    const add = (char: string, { skipValidation }: AddOptions = initialAddOptions) => {
-        const newText = text + char
+    const add = (chars: string, { skipValidation }: AddOptions = initialAddOptions) => {
+        const newText = text + chars
 
         if (skipValidation)
             return setText(newText)
 
+        // Get offset from last successful kana (or ignored romaji) charactes,
+        //  create a slice consisting only of previous non-kana (or not ignored) characters
+        //  and validate them with the newly added romaji
+        const offset = sizes.length ? sizes.reduce((acc, n) => acc + n, 0) : 0 
         const romajiSlice = newText.slice(offset)
         const hiraganaSlice = validate(romajiSlice)
 
         if (hiraganaSlice === null)
             return setText(newText)
 
-        setOffset(prevOffset => prevOffset + hiraganaSlice.length)
+        // setOffset(prevOffset => prevOffset + hiraganaSlice.length)
         setSizes(prevSizes => [...prevSizes, hiraganaSlice.length])
+        setRomaji(prevRomaji => [...prevRomaji, romajiSlice])
         setText(prevText => prevText.slice(0, offset) + hiraganaSlice)
     }
 
     const remove = (): string => {
-        let buffer = ''
-        let sliced = text.slice(-1)
+        const offset = -1
+        const slice = text.slice(offset)
 
-        if (!isRomaji(sliced)) {
-            // Take all kana chars that make up specified romaji
-            const amount = 1 * (sizes.pop() ?? 1)
-            sliced = text.slice(-1 * amount)
+        if (!isRomaji(slice)) {
+            // Get romaji representation of last kana combination
+            //  and get offset equal to the length of this kana combination.
+            const romajiChar = romaji.slice(offset).pop() ?? ''
+            const textOffset = ([...sizes].pop() ?? -offset) * -1
 
-            let unicode = symbolToUnicodeHex(sliced)
-            let romaji = HIRAGANA.unicode[unicode]?.inputs[0] ?? null
+            setSizes(prevSizes => prevSizes.slice(0, offset))
+            setRomaji(prevRomaji => prevRomaji.slice(0, offset))
+            setText(prevText => prevText.slice(0, textOffset) + romajiChar.slice(0, offset))
 
-            if (romaji === null) { 
-                console.error('Previously valid kana with matching unicode has not found a valid match now... HOW?!')
-                return '' 
-            }
-
-            buffer = romaji.slice(0, -1)
-            sliced = romaji.slice(-1)
-
-            setOffset(prevOffset => prevOffset - 1)
-            setSizes(prevSizes => { 
-                prevSizes.pop() 
-                return prevSizes
-            })
+            return romajiChar.slice(offset)
         }
 
-        setText(prevText => prevText.slice(-1) + buffer)
+        setText(prevText => prevText.slice(0, offset))
+        return slice
 
-        return sliced
     }
 
     /**
