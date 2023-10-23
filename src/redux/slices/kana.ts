@@ -55,5 +55,7 @@ export const kanaSlice = createSlice({
 
 
 export const selectKana = (state: RootState) => state.kana.payload
+export const selectStatus = (state: RootState) => state.kana.status
+export const selectError = (state: RootState) => state.kana.error
 
 export default kanaSlice.reducer
