@@ -2,12 +2,14 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import counterReducer from './counter/counterSlice'
 import hiraganaReducer from './slices/hiragana'
+import kanaReducer from './slices/kana'
 
 
 const store = configureStore({
     reducer: {
         counter: counterReducer,
         hiragana: hiraganaReducer,
+        kana: kanaReducer,
     },
 })
 

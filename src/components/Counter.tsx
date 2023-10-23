@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from '../redux/hooks'
-import { increment, decrement } from '../redux/counter/counterSlice'
+import { increment, decrement, setCounter } from '../redux/counter/counterSlice'
 
 
 function Counter() {
@@ -11,6 +11,8 @@ function Counter() {
             <button onClick={() => dispatch(increment())}>+</button>
             <span>{count}</span>
             <button onClick={() => dispatch(decrement())}>-</button>
+            <br />
+            <button onClick={() => dispatch(setCounter(0))}>Set counter to 0</button>
         </div>
     )
 }

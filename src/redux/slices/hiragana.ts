@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
 import type { RootState } from '../store'
 
 import RomajiMap from '../../data/json/romaji-map.json'
@@ -27,38 +27,64 @@ const initialState: KanaState = {
     input: {},
 }
 
+
+export const loadHiragana = createAsyncThunk('hiragana/load', async () => {
+    let romajiObj: KanaState['romaji'] = {}
+    Object.entries(RomajiMap.hiragana.used).forEach(([group, inputs]: [string, Romaji[]]) => {
+        inputs.length && inputs.forEach((input: Romaji) => {
+            romajiObj = { ...romajiObj, [input]: group }
+        })
+    })
+
+    let unicodeObj: KanaState['unicode'] = UnicodeMap.hiragana
+
+    let inputObj: KanaState['input'] = {}
+    Object.entries(UnicodeMap.hiragana).forEach(([code, data]: [UnicodeNumber, KanaUnicodeData]) => {
+        data.inputs.length && data.inputs.forEach((input: Romaji) => {
+            inputObj = { ...inputObj, [input]: code }
+        })
+    })
+
+    return { romaji: romajiObj, unicode: unicodeObj, input: inputObj }
+})
+
+
 export const hiraganaSlice = createSlice({
     name: 'hiragana',
     initialState,
     reducers: {
-        load: (state) => {
-            // let romajiArrays = Object.values(RomajiMap.hiragana.used)
-            // state.romaji = [ ...romajiArrays.flat(1) ]
-            let romajiObj = {}
-            Object.entries(RomajiMap.hiragana.used)
-                .forEach(([group, inputs]: [string, Romaji[]]) => {
-                    inputs.length && inputs.forEach((input: Romaji) => {
-                        romajiObj = { ...romajiObj, [input]: group }
-                    })
-                })
-            state.romaji = { ...romajiObj }
+        // load: (state) => {
+        //     let romajiObj = {}
+        //     Object.entries(RomajiMap.hiragana.used)
+        //         .forEach(([group, inputs]: [string, Romaji[]]) => {
+        //             inputs.length && inputs.forEach((input: Romaji) => {
+        //                 romajiObj = { ...romajiObj, [input]: group }
+        //             })
+        //         })
+        //     state.romaji = { ...romajiObj }
 
-            let unicodeObj = UnicodeMap.hiragana
-            state.unicode = { ...unicodeObj }
+        //     let unicodeObj = UnicodeMap.hiragana
+        //     state.unicode = { ...unicodeObj }
 
-            let inputObj = {}
-            Object.entries(UnicodeMap.hiragana)
-                .forEach(([code, data]: [UnicodeNumber, KanaUnicodeData]) => {
-                    data.inputs.length && data.inputs.forEach((input: Romaji) => {
-                        inputObj = { ...inputObj, [input]: code }
-                    })
-                })
-            state.input = { ...inputObj }
-        },
+        //     let inputObj = {}
+        //     Object.entries(UnicodeMap.hiragana)
+        //         .forEach(([code, data]: [UnicodeNumber, KanaUnicodeData]) => {
+        //             data.inputs.length && data.inputs.forEach((input: Romaji) => {
+        //                 inputObj = { ...inputObj, [input]: code }
+        //             })
+        //         })
+        //     state.input = { ...inputObj }
+        // },
     },
+    extraReducers(builder) {
+        builder.addCase(loadHiragana.fulfilled, (state, action) => ({
+            ...state, 
+            ...action.payload
+        }))
+    }
 })
 
-export const { load } = hiraganaSlice.actions
+// export const { load } = hiraganaSlice.actions
 export const selectHiragana = (state: RootState) => state.hiragana
 
 export default hiraganaSlice.reducer

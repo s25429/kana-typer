@@ -103,6 +103,9 @@ function useHiragana(): [string[], Function] {
     )
 
     const generate = (length: number = 8) => {
+        console.log(HIRAGANA)
+        return
+
         const inputs = Object.keys(HIRAGANA.romaji).reduce((acc: string[], value: string) => (
             value.length > 1 && value.charAt(0) !== 'x' // TODO: what hiragana sounds can have soukon in front of them?
                 ? [...acc, value, value.charAt(0) + value]
