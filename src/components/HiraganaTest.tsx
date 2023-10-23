@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import useHiragana from '../hooks/useHiragana'
+import useHiragana from '../hooks/useHiraganaText'
 
 
 function HiraganaTest() {
