@@ -1,25 +1,29 @@
-import { useEffect } from 'react'
-import { useAppSelector, useAppDispatch } from '../redux/hooks'
-import { load as loadHiragana } from '../redux/slices/hiragana'
+import { useState } from 'react'
 import useHiragana from '../hooks/useHiragana'
 
 
 function HiraganaTest() {
-    const HIRAGANA = useAppSelector((state) => state.hiragana)
-    const dispatch = useAppDispatch()
-
     const [hiragana, setHiragana] = useHiragana()
+    const [text, setText] = useState('')
 
-    useEffect(() => { dispatch(loadHiragana()) }, [])
+    const updateHiragana = (event: React.KeyboardEvent<HTMLInputElement>) => {
+        const char = event.key.length === 1 ? event.key : null
 
-    // console.log([1, 2, 3].slice(0, -1), [1, 2, 3].slice(-1), [].slice(-1))
-    // console.log([1, 2, 3].slice(0, -1))
-    console.log(['jeden', 'dwa', 'trzy'].slice(-1).pop()?.slice(0, -1))
+        if (char !== null) {
+            const valid = setHiragana.add(char)
+
+            if (valid) {
+                setText('')
+            }
+        }
+    }
 
     return (<>
         <div>{hiragana}</div>
-        <button onClick={() => setHiragana.add('kka')}>+</button>
-        <button onClick={() => setHiragana.remove()}>-</button>
+        {/* <button onClick={() => setHiragana.add('kka')}>+</button>
+        <button onClick={() => setHiragana.remove()}>-</button> */}
+        {/* onKeyDown={(e) => updateHiragana(e)} */}
+        <input type="text" name="text" id="text" value={text} onChange={(e) => setText(e.target.value)} onKeyDown={(e) => updateHiragana(e)} />
     </>)
 }
 

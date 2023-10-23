@@ -6,7 +6,7 @@ import { load as loadHiragana } from '../redux/slices/hiragana'
 type UseHiragana = [
     string,
     {
-        add: (chars: string, options?: AddOptions) => void
+        add: (chars: string, options?: AddOptions) => boolean
         remove: () => string
     },
 ]
@@ -31,11 +31,13 @@ function useHiragana(): UseHiragana {
     const [romaji, setRomaji] = useState<string[]>([])
 
 
-    const add = (chars: string, { skipValidation }: AddOptions = initialAddOptions) => {
+    const add = (chars: string, { skipValidation }: AddOptions = initialAddOptions): boolean => {
         const newText = text + chars
 
-        if (skipValidation)
-            return setText(newText)
+        if (skipValidation) {
+            setText(newText)
+            return true
+        }
 
         // Get offset from last successful kana (or ignored romaji) charactes,
         //  create a slice consisting only of previous non-kana (or not ignored) characters
@@ -44,13 +46,17 @@ function useHiragana(): UseHiragana {
         const romajiSlice = newText.slice(offset)
         const hiraganaSlice = validate(romajiSlice)
 
-        if (hiraganaSlice === null)
-            return setText(newText)
+        if (hiraganaSlice === null) {
+            setText(newText)
+            return false
+        }
 
         // setOffset(prevOffset => prevOffset + hiraganaSlice.length)
         setSizes(prevSizes => [...prevSizes, hiraganaSlice.length])
         setRomaji(prevRomaji => [...prevRomaji, romajiSlice])
         setText(prevText => prevText.slice(0, offset) + hiraganaSlice)
+
+        return true
     }
 
     const remove = (): string => {
