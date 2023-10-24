@@ -1,0 +1,9 @@
+{
+    "hiragana": "https://www.unicode.org/charts/PDF/U3040.pdf",
+    "kana extended-a": "https://www.unicode.org/charts/PDF/U1B100.pdf",
+    "kana extended-b": "https://www.unicode.org/charts/PDF/U1AFF0.pdf",
+    "kana supplement": "https://www.unicode.org/charts/PDF/U1AFF0.pdf",
+    "small kana extension": "https://www.unicode.org/charts/PDF/U1B130.pdf",
+    "katakana": "https://www.unicode.org/charts/PDF/U30A0.pdf",
+    "prolonged sound mark": "https://en.wikipedia.org/wiki/Ch%C5%8Donpu"
+}
