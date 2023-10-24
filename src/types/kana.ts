@@ -8,16 +8,28 @@ export namespace Kana {
         combination : Unicode[]
     }
 
+    export interface RomajiObject {
+        [key : Romaji] : string
+    }
+
+    export interface UnicodeObject {
+        [key : Unicode] : UnicodeData
+    }
+
+    export interface MapObject {
+        [key : Romaji]  : Unicode
+    }
+
     export interface Payload {
         hiragana : {
-            romaji  : { [key : Romaji]  : string      }
-            unicode : { [key : Unicode] : UnicodeData }
-            map     : { [key : Romaji]  : Unicode     }
+            romaji  : RomajiObject
+            unicode : UnicodeObject
+            map     : MapObject
         }
         katakana : {
-            romaji  : { [key : Romaji]  : string      }
-            unicode : { [key : Unicode] : UnicodeData }
-            map     : { [key : Romaji]  : Unicode     }
+            romaji  : RomajiObject
+            unicode : UnicodeObject
+            map     : MapObject
         }
         kanji : {}
     }
