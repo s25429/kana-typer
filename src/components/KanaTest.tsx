@@ -1,10 +1,11 @@
 import { useEffect } from 'react'
-import { useAppSelector, useAppDispatch } from '../redux/hooks'
+import { useAppSelector } from '../redux/hooks'
+import { selectKana } from '../redux/slices/kana'
 import useKana from '../hooks/useKana'
 
 
 function KanaTest() {
-    const kana = useAppSelector(state => state.kana.payload)
+    const kana = useAppSelector(selectKana)
     const test = useKana()
 
 

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useAppSelector, useAppDispatch } from '../redux/hooks'
-import { fetch as fetchKana, selectStatus } from '../redux/slices/kana'
+import { fetchKana, selectStatus } from '../redux/slices/kana'
 
 
 interface UseKanaOptions {

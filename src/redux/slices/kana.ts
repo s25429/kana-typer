@@ -2,7 +2,7 @@ import type { RootState } from '../store'
 import type { Kana } from '../../types/kana' 
 import type { JSON } from '../../types/json'
 
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
 
@@ -42,7 +42,7 @@ const getKanaMap = (data: Kana.UnicodeObject): Kana.MapObject => (
         ), {})
 )
 
-export const fetch = createAsyncThunk('kana/fetch', async () => {
+export const fetchKana = createAsyncThunk('kana/fetch', async () => {
     await Promise.resolve('redux kana test').then(v => console.debug(v))
     await new Promise(resolve => setTimeout(resolve, 1000)) // TODO: DEBUG
 
@@ -72,17 +72,17 @@ export const kanaSlice = createSlice({
     reducers: {},
     extraReducers(builder) { 
         builder
-            .addCase(fetch.pending, (state, _) => {
+            .addCase(fetchKana.pending, (state, _) => {
                 state.status = 'pending'
                 state.error = undefined
                 state.payload = undefined
             })
-            .addCase(fetch.fulfilled, (state, action) => {
+            .addCase(fetchKana.fulfilled, (state, action) => {
                 state.status = 'fulfilled'
                 state.error = undefined
                 state.payload = action.payload
             })
-            .addCase(fetch.rejected, (state, action) => {
+            .addCase(fetchKana.rejected, (state, action) => {
                 state.status = 'fulfilled'
                 state.error = action.payload as string
                 state.payload = undefined
