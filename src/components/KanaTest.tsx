@@ -1,25 +1,24 @@
+import { useState } from 'react'
 import useKanaTyper from '../hooks/useKanaTyper'
+
+import * as KanaUtils from '../utils/kana'
 
 
 function KanaTest() {
     console.log('KanaTest')
 
-    const [test] = useKanaTyper()
+    const [kana, funcs] = useKanaTyper()
+    const [inputText, setInputText] = useState('')
 
-    // const kana = useAppSelector(selectKana)
-    // const kanaStatus = useAppSelector(selectStatus)
-    // const func = useKana()
-
-    // const [text, setText] = useState([])
-
-    // useEffect(() => {
-    //     setText(func.generateRandom({ hiragana: true }))
-    // }, [kanaStatus])
+    const handleInputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        
+    }
 
     return (<>
-        <span>{''}</span>
+        <span>{KanaUtils.charsToString(kana)}</span>
         <br />
-        <input type="text" name="input" id="input" />
+        <input type="text" value={inputText} onChange={handleInputOnChange} />
+        <button onClick={funcs.reloadChars}>🔃</button>
     </>)
 }
 

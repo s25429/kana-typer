@@ -26,6 +26,17 @@ export const symbolToUnicodeHex = (
 )
 
 /**
+ * 
+ */
+export const charsToString = (
+    chars: Kana.Char[]
+): string => (
+    chars
+        .map(({ kana, romaji }: Kana.Char) => kana !== '' ? kana : romaji)
+        .join('')
+)
+
+/**
  * Checks if given romaji is valid with loaded kana.
  * @param romaji - slice of text containing (hopefully) only romaji part
  */

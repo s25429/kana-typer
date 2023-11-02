@@ -25,7 +25,7 @@ import * as KanaUtils from '../utils/kana'
  */
 
 
-function useKanaTyper() {
+function useKanaTyper(): [Kana.Char[], ...any] {
     console.log('useKanaTyper')
 
     const kana = useAppSelector(selectKana)
@@ -34,9 +34,17 @@ function useKanaTyper() {
 
     const [chars, setChars] = useState<Kana.Char[]>([])
 
+    const reloadChars = () => {
+        setChars(KanaUtils.generateRandom({ 
+            payload: kana, 
+            family: ['hiragana'], 
+            length: 8 
+        }))
+    }
+
     useEffect(() => {
         console.log('useEffect')
-        
+
         if (kanaStatus === 'pending')
             kanaDispatch(fetchKana())
 
@@ -48,7 +56,7 @@ function useKanaTyper() {
             }))
     }, [kanaStatus, kanaDispatch])
 
-    return [chars]
+    return [chars, { reloadChars }]
 }
 
 
