@@ -25,15 +25,8 @@ export const symbolToUnicodeHex = (
     symbol.codePointAt(0)?.toString(16) ?? missingUnicode
 )
 
-/**
- * 
- */
-export const charsToString = (
-    chars: Kana.Char[]
-): string => (
-    chars
-        .map(({ kana, romaji }: Kana.Char) => kana !== '' ? kana : romaji)
-        .join('')
+export const isValidSymbol = (symbol: string): boolean => (
+    unicodeHexToSymbol(missingUnicode) !== symbol
 )
 
 /**
@@ -140,6 +133,30 @@ export const parseAvailableKana = (
         ? [romaji] 
         : null
 )
+
+export const parseRomaji = (
+    payload: KanaReduxPayload,
+    romaji: Kana.Romaji,
+    family: Kana.Family = 'hiragana'
+): Kana.Char => {
+    const parsed = 
+        parseYoonWithSokuon(romaji) ?? 
+        parseYoon(romaji) ?? 
+        parseSokuon(romaji) ??
+        parseAvailableKana(payload, romaji) ??
+        ['']
+
+    const char = parsed
+        .map((romaji: Kana.Romaji) => (
+            validRomaji(payload, romaji.charAt(0) === 'x' ? romaji.slice(1) : romaji) && payload !== undefined
+                ? payload[family].map[romaji]
+                : missingUnicode
+        ))
+        .map(unicodeHexToSymbol)
+        .join('')
+
+    return { kana: char, romaji }
+}
 
 export const generateRandom = ({
     payload,
