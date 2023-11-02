@@ -25,6 +25,7 @@ export const symbolToUnicodeHex = (
     symbol.codePointAt(0)?.toString(16) ?? missingUnicode
 )
 
+// TODO: add documentation
 export const isValidSymbol = (symbol: string): boolean => (
     unicodeHexToSymbol(missingUnicode) !== symbol
 )
@@ -134,6 +135,7 @@ export const parseAvailableKana = (
         : null
 )
 
+// TODO: add documentation
 export const parseRomaji = (
     payload: KanaReduxPayload,
     romaji: Kana.Romaji,
@@ -158,6 +160,8 @@ export const parseRomaji = (
     return { kana: char, romaji }
 }
 
+// TODO: write documentation
+// TODO: fix length parameter to be the amount of chars, not array items
 export const generateRandom = ({
     payload,
     family,
@@ -189,6 +193,7 @@ export const generateRandom = ({
             allInputs[Math.floor(Math.random() * allInputs.length)]
         ))
 
+        // TODO: replace with existing function
         const parsedRomaji = generatedInputs.map((input: Kana.Romaji) => (
             parseYoonWithSokuon(input) ?? 
             parseYoon(input) ?? 

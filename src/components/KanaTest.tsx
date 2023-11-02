@@ -22,7 +22,6 @@ function KanaTest() {
     const handleInputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
         const char = KanaUtils.parseRomaji(payload, value.toLowerCase(), 'hiragana')
-        console.log(offset)
 
         // correct char
         if (char.kana === kana[index].kana) {
