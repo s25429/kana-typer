@@ -1,16 +1,25 @@
-import { useEffect } from 'react'
-import { useAppSelector } from '../redux/hooks'
-import { selectKana } from '../redux/slices/kana'
-import useKana from '../hooks/useKana'
+import useKanaTyper from '../hooks/useKanaTyper'
 
 
 function KanaTest() {
-    const kana = useAppSelector(selectKana)
-    const test = useKana()
+    console.log('KanaTest')
 
+    const [test] = useKanaTyper()
+
+    // const kana = useAppSelector(selectKana)
+    // const kanaStatus = useAppSelector(selectStatus)
+    // const func = useKana()
+
+    // const [text, setText] = useState([])
+
+    // useEffect(() => {
+    //     setText(func.generateRandom({ hiragana: true }))
+    // }, [kanaStatus])
 
     return (<>
-        <span>hello</span>
+        <span>{''}</span>
+        <br />
+        <input type="text" name="input" id="input" />
     </>)
 }
 

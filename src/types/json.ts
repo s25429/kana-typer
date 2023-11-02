@@ -36,6 +36,8 @@ export namespace JSON {
     }
 
     export interface UnicodeMap {
-        hiragana : Kana.UnicodeObject
+        hiragana : { 
+            [key : Kana.Unicode] : Kana.UnicodeData 
+        }
     }
 }
