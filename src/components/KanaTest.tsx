@@ -11,7 +11,12 @@ function KanaTest() {
     const [inputText, setInputText] = useState('')
 
     const handleInputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        
+        const value = e.target.value
+
+        if (value.toLowerCase() === 'siema')
+            setInputText('')
+        else
+            setInputText(value)
     }
 
     return (<>
