@@ -1,0 +1,688 @@
+{
+    "hiragana": {
+        "3041": {
+            "key": "a",
+            "group": "letters",
+            "title": "hiragana letter a",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3044": {
+            "key": "i",
+            "group": "letters",
+            "title": "hiragana letter i",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3046": {
+            "key": "u",
+            "group": "letters",
+            "title": "hiragana letter u",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3048": {
+            "key": "e",
+            "group": "letters",
+            "title": "hiragana letter e",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "304a": {
+            "key": "o",
+            "group": "letters",
+            "title": "hiragana letter o",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3093": {
+            "key": "n",
+            "group": "letters",
+            "title": "hiragana letter n",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "304b": {
+            "key": "ka",
+            "group": "letters",
+            "title": "hiragana letter ka",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "304d": {
+            "key": "ki",
+            "group": "letters",
+            "title": "hiragana letter ki",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "304f": {
+            "key": "ku",
+            "group": "letters",
+            "title": "hiragana letter ku",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3051": {
+            "key": "ke",
+            "group": "letters",
+            "title": "hiragana letter ke",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3053": {
+            "key": "ko",
+            "group": "letters",
+            "title": "hiragana letter ko",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "304c": {
+            "key": "ga",
+            "group": "letters",
+            "title": "hiragana letter ga",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "304e": {
+            "key": "gi",
+            "group": "letters",
+            "title": "hiragana letter gi",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3050": {
+            "key": "gu",
+            "group": "letters",
+            "title": "hiragana letter gu",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3052": {
+            "key": "ge",
+            "group": "letters",
+            "title": "hiragana letter ge",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3054": {
+            "key": "go",
+            "group": "letters",
+            "title": "hiragana letter go",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3055": {
+            "key": "sa",
+            "group": "letters",
+            "title": "hiragana letter sa",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3057": {
+            "key": "si",
+            "group": "letters",
+            "title": "hiragana letter shi",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3059": {
+            "key": "su",
+            "group": "letters",
+            "title": "hiragana letter su",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "305b": {
+            "key": "se",
+            "group": "letters",
+            "title": "hiragana letter se",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "305d": {
+            "key": "so",
+            "group": "letters",
+            "title": "hiragana letter so",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3056": {
+            "key": "za",
+            "group": "letters",
+            "title": "hiragana letter za",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3058": {
+            "key": "zi",
+            "group": "letters",
+            "title": "hiragana letter ji",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "305a": {
+            "key": "zu",
+            "group": "letters",
+            "title": "hiragana letter su",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "305c": {
+            "key": "ze",
+            "group": "letters",
+            "title": "hiragana letter se",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "305e": {
+            "key": "zo",
+            "group": "letters",
+            "title": "hiragana letter so",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "305f": {
+            "key": "ta",
+            "group": "letters",
+            "title": "hiragana letter ta",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3061": {
+            "key": "ti",
+            "group": "letters",
+            "title": "hiragana letter chi",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3064": {
+            "key": "tu",
+            "group": "letters",
+            "title": "hiragana letter tsu",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3066": {
+            "key": "te",
+            "group": "letters",
+            "title": "hiragana letter te",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3068": {
+            "key": "to",
+            "group": "letters",
+            "title": "hiragana letter to",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3060": {
+            "key": "da",
+            "group": "letters",
+            "title": "hiragana letter da",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3062": {
+            "key": "di",
+            "group": "letters",
+            "title": "hiragana letter ji",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3065": {
+            "key": "du",
+            "group": "letters",
+            "title": "hiragana letter zu",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3067": {
+            "key": "de",
+            "group": "letters",
+            "title": "hiragana letter te",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3069": {
+            "key": "do",
+            "group": "letters",
+            "title": "hiragana letter to",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "306a": {
+            "key": "na",
+            "group": "letters",
+            "title": "hiragana letter na",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "306b": {
+            "key": "ni",
+            "group": "letters",
+            "title": "hiragana letter ni",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "306c": {
+            "key": "nu",
+            "group": "letters",
+            "title": "hiragana letter nu",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "306d": {
+            "key": "ne",
+            "group": "letters",
+            "title": "hiragana letter ne",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "306e": {
+            "key": "no",
+            "group": "letters",
+            "title": "hiragana letter no",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "306f": {
+            "key": "ha",
+            "group": "letters",
+            "title": "hiragana letter ha",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3072": {
+            "key": "hi",
+            "group": "letters",
+            "title": "hiragana letter hi",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3075": {
+            "key": "hu",
+            "group": "letters",
+            "title": "hiragana letter hu",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3078": {
+            "key": "he",
+            "group": "letters",
+            "title": "hiragana letter he",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "307b": {
+            "key": "ho",
+            "group": "letters",
+            "title": "hiragana letter ho",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3070": {
+            "key": "ba",
+            "group": "letters",
+            "title": "hiragana letter ba",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3073": {
+            "key": "bi",
+            "group": "letters",
+            "title": "hiragana letter bi",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3076": {
+            "key": "bu",
+            "group": "letters",
+            "title": "hiragana letter bu",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3079": {
+            "key": "be",
+            "group": "letters",
+            "title": "hiragana letter be",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "307c": {
+            "key": "bo",
+            "group": "letters",
+            "title": "hiragana letter bo",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3071": {
+            "key": "pa",
+            "group": "letters",
+            "title": "hiragana letter pa",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3074": {
+            "key": "pi",
+            "group": "letters",
+            "title": "hiragana letter pi",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3077": {
+            "key": "pu",
+            "group": "letters",
+            "title": "hiragana letter pu",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "307a": {
+            "key": "pe",
+            "group": "letters",
+            "title": "hiragana letter pe",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "307d": {
+            "key": "po",
+            "group": "letters",
+            "title": "hiragana letter po",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "307e": {
+            "key": "ma",
+            "group": "letters",
+            "title": "hiragana letter ma",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "307f": {
+            "key": "mi",
+            "group": "letters",
+            "title": "hiragana letter mi",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3080": {
+            "key": "mu",
+            "group": "letters",
+            "title": "hiragana letter mu",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3081": {
+            "key": "me",
+            "group": "letters",
+            "title": "hiragana letter me",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3082": {
+            "key": "mo",
+            "group": "letters",
+            "title": "hiragana letter mo",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3083": {
+            "key": "ya",
+            "group": "letters",
+            "title": "small hiragana letter ya",
+            "description": "",
+            "type": "gojuon",
+            "small": true,
+            "combination": []
+        },
+        "3084": {
+            "key": "ya",
+            "group": "letters",
+            "title": "hiragana letter ya",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3085": {
+            "key": "yu",
+            "group": "letters",
+            "title": "small hiragana letter yu",
+            "description": "",
+            "type": "gojuon",
+            "small": true,
+            "combination": []
+        },
+        "3086": {
+            "key": "yu",
+            "group": "letters",
+            "title": "hiragana letter yu",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3087": {
+            "key": "yo",
+            "group": "letters",
+            "title": "small hiragana letter yo",
+            "description": "",
+            "type": "gojuon",
+            "small": true,
+            "combination": []
+        },
+        "3088": {
+            "key": "yo",
+            "group": "letters",
+            "title": "hiragana letter yo",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3089": {
+            "key": "ra",
+            "group": "letters",
+            "title": "hiragana letter ra",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "308a": {
+            "key": "ri",
+            "group": "letters",
+            "title": "hiragana letter ri",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "308b": {
+            "key": "ru",
+            "group": "letters",
+            "title": "hiragana letter ru",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "308c": {
+            "key": "re",
+            "group": "letters",
+            "title": "hiragana letter re",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "308d": {
+            "key": "ro",
+            "group": "letters",
+            "title": "hiragana letter ro",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "308f": {
+            "key": "wa",
+            "group": "letters",
+            "title": "hiragana letter wa",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3090": {
+            "key": "wi",
+            "group": "letters",
+            "title": "hiragana letter wi",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3091": {
+            "key": "we",
+            "group": "letters",
+            "title": "hiragana letter we",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        },
+        "3092": {
+            "key": "wo",
+            "group": "letters",
+            "title": "hiragana letter wo",
+            "description": "",
+            "type": "gojuon",
+            "small": false,
+            "combination": []
+        }
+    }
+}
