@@ -1,0 +1,840 @@
+{
+    "hiragana": {
+        "a": {
+            "family": null,
+            "value": "a",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "i": {
+            "family": null,
+            "value": "i",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "u": {
+            "family": null,
+            "value": "u",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "e": {
+            "family": null,
+            "value": "e",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "o": {
+            "family": null,
+            "value": "o",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "n": {
+            "family": null,
+            "value": "n",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "ka": {
+            "family": "k",
+            "value": "ka",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ki": {
+            "family": "k",
+            "value": "ki",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ku": {
+            "family": "k",
+            "value": "ku",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ke": {
+            "family": "k",
+            "value": "ke",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ko": {
+            "family": "k",
+            "value": "ko",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "ga": {
+            "family": "k",
+            "value": "ga",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "gi": {
+            "family": "k",
+            "value": "gi",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "gu": {
+            "family": "k",
+            "value": "gu",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ge": {
+            "family": "k",
+            "value": "ge",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "go": {
+            "family": "k",
+            "value": "go",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "sa": {
+            "family": "s",
+            "value": "sa",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "si": {
+            "family": "s",
+            "value": "shi",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "su": {
+            "family": "s",
+            "value": "su",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "se": {
+            "family": "s",
+            "value": "se",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "so": {
+            "family": "s",
+            "value": "so",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "za": {
+            "family": "s",
+            "value": "za",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "zi": {
+            "family": "s",
+            "value": "ji",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "zu": {
+            "family": "s",
+            "value": "zu",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ze": {
+            "family": "s",
+            "value": "ze",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "zo": {
+            "family": "s",
+            "value": "zo",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "ta": {
+            "family": "t",
+            "value": "ta",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ti": {
+            "family": "t",
+            "value": "chi",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "tu": {
+            "family": "t",
+            "value": "tsu",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "te": {
+            "family": "t",
+            "value": "te",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "to": {
+            "family": "t",
+            "value": "to",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "da": {
+            "family": "t",
+            "value": "da",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "di": {
+            "family": "t",
+            "value": "ji",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": true }
+        },
+        "du": {
+            "family": "t",
+            "value": "zu",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": true }
+        },
+        "de": {
+            "family": "t",
+            "value": "de",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "do": {
+            "family": "t",
+            "value": "do",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "na": {
+            "family": "n",
+            "value": "na",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ni": {
+            "family": "n",
+            "value": "ni",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "nu": {
+            "family": "n",
+            "value": "nu",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ne": {
+            "family": "n",
+            "value": "ne",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "no": {
+            "family": "n",
+            "value": "no",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "ha": {
+            "family": "h",
+            "value": "ha",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "hi": {
+            "family": "h",
+            "value": "hi",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "hu": {
+            "family": "h",
+            "value": "fu",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "he": {
+            "family": "h",
+            "value": "he",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ho": {
+            "family": "h",
+            "value": "ho",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "ba": {
+            "family": "h",
+            "value": "ba",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "bi": {
+            "family": "h",
+            "value": "bi",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "bu": {
+            "family": "h",
+            "value": "bu",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "be": {
+            "family": "h",
+            "value": "be",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "bo": {
+            "family": "h",
+            "value": "bo",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "pa": {
+            "family": "h",
+            "value": "pa",
+            "type": { "gojuon": false, "dakuten": false, "handakuten": true, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "pi": {
+            "family": "h",
+            "value": "pi",
+            "type": { "gojuon": false, "dakuten": false, "handakuten": true, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "pu": {
+            "family": "h",
+            "value": "pu",
+            "type": { "gojuon": false, "dakuten": false, "handakuten": true, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "pe": {
+            "family": "h",
+            "value": "pe",
+            "type": { "gojuon": false, "dakuten": false, "handakuten": true, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "po": {
+            "family": "h",
+            "value": "po",
+            "type": { "gojuon": false, "dakuten": false, "handakuten": true, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "ma": {
+            "family": "m",
+            "value": "ma",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "mi": {
+            "family": "m",
+            "value": "mi",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "mu": {
+            "family": "m",
+            "value": "mu",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "me": {
+            "family": "m",
+            "value": "me",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "mo": {
+            "family": "m",
+            "value": "mo",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "ya": {
+            "family": "y",
+            "value": "ya",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": true },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "yi": {
+            "family": "y",
+            "value": "yi",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": true, "extinct": false, "obsolete": false }
+        },
+        "yu": {
+            "family": "y",
+            "value": "yu",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": true },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ye": {
+            "family": "y",
+            "value": "ye",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": true, "obsolete": false }
+        },
+        "yo": {
+            "family": "y",
+            "value": "yo",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": true },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "ra": {
+            "family": "r",
+            "value": "ra",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ri": {
+            "family": "r",
+            "value": "ri",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ru": {
+            "family": "r",
+            "value": "ru",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "re": {
+            "family": "r",
+            "value": "re",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ro": {
+            "family": "r",
+            "value": "ro",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "wa": {
+            "family": "w",
+            "value": "wa",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "wi": {
+            "family": "w",
+            "value": "wi",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": true }
+        },
+        "wu": {
+            "family": "w",
+            "value": "wu",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": true, "extinct": false, "obsolete": false }
+        },
+        "we": {
+            "family": "w",
+            "value": "we",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": true }
+        },
+        "wo": {
+            "family": "w",
+            "value": "wo",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "kya": {
+            "family": "k",
+            "value": "kya",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "kyu": {
+            "family": "k",
+            "value": "kyu",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "kyo": {
+            "family": "k",
+            "value": "kyo",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "gya": {
+            "family": "k",
+            "value": "gya",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "gyu": {
+            "family": "k",
+            "value": "gyu",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "gyo": {
+            "family": "k",
+            "value": "gyo",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "sya": {
+            "family": "s",
+            "value": "sha",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "syu": {
+            "family": "s",
+            "value": "shu",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "syo": {
+            "family": "s",
+            "value": "sho",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "zya": {
+            "family": "s",
+            "value": "ja",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "zyu": {
+            "family": "s",
+            "value": "ju",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "zyo": {
+            "family": "s",
+            "value": "jo",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "tya": {
+            "family": "t",
+            "value": "cha",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "tyu": {
+            "family": "t",
+            "value": "chu",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "tyo": {
+            "family": "t",
+            "value": "cho",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "dya": {
+            "family": "t",
+            "value": "ja",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": true }
+        },
+        "dyu": {
+            "family": "t",
+            "value": "ju",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": true }
+        },
+        "dyo": {
+            "family": "t",
+            "value": "jo",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": true }
+        },
+
+
+        "nya": {
+            "family": "n",
+            "value": "nya",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "nyu": {
+            "family": "n",
+            "value": "nyu",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "nyo": {
+            "family": "n",
+            "value": "nyo",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": false, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "hya": {
+            "family": "h",
+            "value": "hya",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "hyu": {
+            "family": "h",
+            "value": "hyu",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "hyo": {
+            "family": "h",
+            "value": "hyo",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "bya": {
+            "family": "h",
+            "value": "bya",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "byu": {
+            "family": "h",
+            "value": "byu",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "byo": {
+            "family": "h",
+            "value": "byo",
+            "type": { "gojuon": false, "dakuten": true, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "pya": {
+            "family": "h",
+            "value": "pya",
+            "type": { "gojuon": false, "dakuten": false, "handakuten": true, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "pyu": {
+            "family": "h",
+            "value": "pyu",
+            "type": { "gojuon": false, "dakuten": false, "handakuten": true, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "pyo": {
+            "family": "h",
+            "value": "pyo",
+            "type": { "gojuon": false, "dakuten": false, "handakuten": true, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "mya": {
+            "family": "m",
+            "value": "mya",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "myu": {
+            "family": "m",
+            "value": "myu",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "myo": {
+            "family": "m",
+            "value": "myo",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+
+
+        "rya": {
+            "family": "r",
+            "value": "rya",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ryu": {
+            "family": "r",
+            "value": "ryu",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        },
+        "ryo": {
+            "family": "r",
+            "value": "ryo",
+            "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": true },
+            "variants": { "sokuon": true, "small": false },
+            "info": { "unused": false, "extinct": false, "obsolete": false }
+        }
+    }
+}
