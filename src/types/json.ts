@@ -35,9 +35,15 @@ export namespace JSON {
         hiragana : RomajiMapData
     }
 
+    export interface RomajiMapNew {
+        hiragana : { [key : Kana.Romaji] : Kana.RomajiData }
+    }
+
     export interface UnicodeMap {
-        hiragana : { 
-            [key : Kana.Unicode] : Kana.UnicodeData 
-        }
+        hiragana : { [key : Kana.Unicode] : Kana.UnicodeData }
+    }
+
+    export interface UnicodeMapNew {
+        hiragana : { [key : Kana.Unicode] : Kana.UnicodeDataNew }
     }
 }

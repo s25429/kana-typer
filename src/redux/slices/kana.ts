@@ -7,11 +7,11 @@ import axios from 'axios'
 
 
 interface RomajiObject {
-    [key : Kana.Romaji] : string
+    [key : Kana.Romaji] : Kana.RomajiData
 }
 
 interface UnicodeObject {
-    [key : Kana.Unicode] : Kana.UnicodeData
+    [key : Kana.Unicode] : Kana.UnicodeDataNew
 }
 
 interface MapObject {
@@ -36,7 +36,6 @@ interface Payload {
     }
 }
 
-
 interface KanaState {
     status   : Kana.Status
     error   ?: string
@@ -50,33 +49,42 @@ const initialState: KanaState = {
 
 const fetchJSON = async (path: string) => await axios.get(path).then(res => res.data)
 
-const getRomajiInputs = (data: JSON.RomajiMapData): RomajiObject => (
+const getRomajiInputs = (data: RomajiObject): RomajiObject => (
     Object
-        .entries(data.used)
-        .reduce((acc: RomajiObject, [group, inputs]: [string, Kana.Romaji[]]) => (
-            inputs.length
-                ? { 
-                    ...acc, 
-                    ...inputs.reduce((acc2, input) => ({ ...acc2, [input]: group }), {})
-                }
+        .entries(data)
+        .reduce((
+            acc: RomajiObject, 
+            [romaji, data]: [Kana.Romaji, Kana.RomajiData]
+        ) => (
+            !data.info.unused && !data.info.extinct && !data.info.obsolete
+                ? { ...acc, [romaji]: data }
                 : acc
         ), {})
 )
 
-const getUnicodes = (data: UnicodeObject): UnicodeObject => ({ ...data })
+const getUnicodes = (data: UnicodeObject, romaji: RomajiObject): UnicodeObject => (
+    Object
+        .entries(data)
+        .reduce((
+            acc: UnicodeObject,
+            [code, data]: [Kana.Unicode, Kana.UnicodeDataNew]
+        ) => (
+            romaji[data.key] !== undefined
+                ? { ...acc, [code]: data }
+                : acc
+        ), {})
+)
 
 const getKanaMap = (data: UnicodeObject): MapObject => (
     Object
         .entries(data)
-        .reduce((acc: MapObject, [code, data]: [Kana.Unicode, Kana.UnicodeData]) => (
-            data.inputs.length
-                ? { 
-                    ...acc, 
-                    ...data.inputs.reduce((acc2, input: Kana.Romaji) => (
-                        { ...acc2, [input]: code }
-                    ), {})
-                }
-                : acc
+        .reduce((
+            acc: MapObject, 
+            [code, data]: [Kana.Unicode, Kana.UnicodeDataNew]
+        ) => (
+            data.small
+                ? { ...acc, [`x${data.key}`]: code }
+                : { ...acc, [data.key]: code }
         ), {})
 )
 
@@ -84,14 +92,18 @@ export const fetchKana = createAsyncThunk('kana/fetch', async () => {
     await Promise.resolve('redux thunk for kana loading').then(v => console.debug(v))
     await new Promise(resolve => setTimeout(resolve, 1000)) // TODO: DEBUG
 
-    const romajiMap: JSON.RomajiMap = await fetchJSON('json/romaji-map.json')
-    const unicodeMap: JSON.UnicodeMap = await fetchJSON('json/unicode-map.json')
+    const romajiMap: JSON.RomajiMapNew = await fetchJSON('json/romaji-map-new.json')
+    const unicodeMap: JSON.UnicodeMapNew = await fetchJSON('json/unicode-map-new.json')
+
+    const romajiData = getRomajiInputs(romajiMap.hiragana)
+    const unicodeData = getUnicodes(unicodeMap.hiragana, romajiData)
+    const mapData = getKanaMap(unicodeData)
 
     const ret: Payload = {
         hiragana: {
-            romaji: getRomajiInputs(romajiMap.hiragana),
-            unicode: getUnicodes(unicodeMap.hiragana),
-            map: getKanaMap(unicodeMap.hiragana),
+            romaji: romajiData,
+            unicode: unicodeData,
+            map: mapData,
         },
         katakana: {
             romaji: {},
