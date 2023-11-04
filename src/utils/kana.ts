@@ -25,7 +25,9 @@ export const symbolToUnicodeHex = (
     symbol.codePointAt(0)?.toString(16) ?? missingUnicode
 )
 
-// TODO: add documentation
+/**
+ * Checks if given symbol (e.g. あ) is a compilable symbol or an unknown one.
+ */
 export const isValidSymbol = (symbol: string): boolean => (
     unicodeHexToSymbol(missingUnicode) !== symbol
 )
@@ -135,7 +137,13 @@ export const parseAvailableKana = (
         : null
 )
 
-// TODO: add documentation
+/**
+ * Transforms given romaji into kana representation with a symbol.
+ * @param payload - redux slice's payload
+ * @param romaji - romaji representation of kana char
+ * @param family - kana family
+ * @returns object that contains original romaji and kana char
+ */
 export const parseRomaji = (
     payload: KanaReduxPayload,
     romaji: Kana.Romaji,
@@ -193,30 +201,9 @@ export const generateRandom = ({
             allInputs[Math.floor(Math.random() * allInputs.length)]
         ))
 
-        // TODO: replace with existing function
-        const parsedRomaji = generatedInputs.map((input: Kana.Romaji) => (
-            parseYoonWithSokuon(input) ?? 
-            parseYoon(input) ?? 
-            parseSokuon(input) ??
-            parseAvailableKana(payload, input) ??
-            ['']
+        return generatedInputs.map((romaji: Kana.Romaji) => (
+            parseRomaji(payload, romaji, family)
         ))
-
-        const chars = parsedRomaji.map((romajiArray: Kana.Romaji[]) => {
-            return romajiArray
-                .map((romaji: Kana.Romaji) => (
-                    validRomaji(payload, romaji.charAt(0) === 'x' ? romaji.slice(1) : romaji)
-                        ? payload.hiragana.map[romaji]
-                        : missingUnicode
-                ))
-                .map(unicodeHexToSymbol)
-                .join('')
-        })
-
-        return chars.map((char: string, index: number) => ({ 
-            kana: char, 
-            romaji: generatedInputs[index]
-        }))
     }
 
     if (family.includes('hiragana'))
