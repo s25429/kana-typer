@@ -6,9 +6,10 @@ export const missingUnicode: Kana.Unicode = '25a1'
 
 
 /**
-     * Converts unicode in string hex format to unicode symbol. 
-     * If hex was impossible to convert to hexadecimal number, hex "25a1" is used.
-     */
+ * Converts unicode in string hex format to unicode symbol. 
+ * If hex was impossible to convert to hexadecimal number, hex "25a1" is used.
+ * @param hex - unicode hex representation, i.e. "25a1", "3042", ...
+ */
 export const unicodeHexToSymbol = (
     hex: Kana.Unicode
 ): string => (
@@ -18,6 +19,7 @@ export const unicodeHexToSymbol = (
 /**
  * Converts unicode symbol to its hex representation.
  * If symbol was impossible to convert, hex "25a1" is returned.
+ * @param symbol - parsed unicode symbol, e.g. あ , □ , ...
  */
 export const symbolToUnicodeHex = (
     symbol: string
@@ -26,15 +28,10 @@ export const symbolToUnicodeHex = (
 )
 
 /**
- * Checks if given symbol (e.g. あ) is a compilable symbol or an unknown one.
- */
-export const isValidSymbol = (symbol: string): boolean => (
-    unicodeHexToSymbol(missingUnicode) !== symbol
-)
-
-/**
- * Checks if given romaji is valid with loaded kana.
- * @param romaji - slice of text containing (hopefully) only romaji part
+ * Checks if given typed romaji is valid.
+ * @param payload - redux slice's payload
+ * @param romaji - typed romaji ("tsu", not "tu") that includes only one sound
+ * @param family - kana family
  */
 export const validRomaji = (
     payload: KanaReduxPayload,
@@ -47,17 +44,59 @@ export const validRomaji = (
 )
 
 /**
- * Checks if given romaji has unicode value associated with it.
- * @param romaji - slice of text containing (hopefully) only romaji part
+ * Checks if given romaji is a valid key representation
+ * @param payload - redux slice's payload
+ * @param key - key representation of typed romaji, i.e. key="ti" is repr="chi"
+ * @param family - kana family
  */
-export const validUnicode = (
+export const validRomajiKey = (
     payload: KanaReduxPayload,
-    romaji: Kana.Romaji, 
+    key: Kana.RomajiKey, 
     family: Kana.Family = 'hiragana'
 ): boolean => (
     Object
-        .keys(payload ? payload[family].map : {})
-        .includes(romaji)
+        .keys(payload ? payload[family].romaji : {})
+        .includes(key)
+)
+
+/**
+ * Checks if given unicode is a valid character; "25a1" is treated as invalid.
+ * @param payload - redux slice's payload
+ * @param unicode - hex representation of a unicode, i.e. code="3042" is char="あ"
+ * @param family - kana family
+ */
+export const validUnicode = (
+    payload: KanaReduxPayload,
+    unicode: Kana.Unicode, 
+    family: Kana.Family = 'hiragana'
+): boolean => (
+    Object
+        .keys(payload ? payload[family].unicode : {})
+        .includes(unicode)
+)
+
+/**
+ * Checks if given symbol is a missing unicode symbol
+ * @param symbol - parsed unicode symbol, e.g. あ , □ , ...
+ */
+export const validSymbol = (
+    symbol: string,
+): boolean => (
+    symbolToUnicodeHex(symbol) !== missingUnicode
+)
+
+/**
+ * Checks if given symbol is available - if can be printed out by other functions.
+ * @param payload - redux slice's payload
+ * @param symbol - parsed unicode symbol, e.g. あ , □ , ...
+ * @param family - kana family
+ */
+export const validKanaSymbol = (
+    payload: KanaReduxPayload,
+    symbol: string,
+    family: Kana.Family = 'hiragana'
+): boolean => (
+    validUnicode(payload, symbolToUnicodeHex(symbol), family)
 )
 
 /**
@@ -122,21 +161,6 @@ export const parseYoonWithSokuon = (
 }
 
 /**
- * Parses given input in romaji only if this input and unicode corresponding to it is available in database. 
- * Such input only, at most, accepts kana that is comprised of only one unicode character, but can be less dependant on given database content.
- * To see what kana is comprised of only one unicode character, seek help on the internet.
- * @param romaji - text in romaji, e.g. ka
- * @returns romaji in array (so that it follows structure of other parse functions) or null if not applicable.
- */
-export const parseAvailableKana = (
-    payload: KanaReduxPayload,
-    romaji: Kana.Romaji,
-    family: Kana.Family = 'hiragana'
-): Kana.Romaji[] | null => (
-    validRomaji(payload, romaji, family) ? [romaji] : null
-)
-
-/**
  * Transforms given romaji into kana representation with a symbol.
  * @param payload - redux slice's payload
  * @param romaji - romaji representation of kana char
@@ -152,8 +176,7 @@ export const parseRomaji = (
         parseYoonWithSokuon(romaji) ?? 
         parseYoon(romaji) ?? 
         parseSokuon(romaji) ??
-        parseAvailableKana(payload, romaji, family) ??
-        ['']
+        [romaji]
 
     const char = parsed
         .map((romaji: Kana.Romaji) => (
@@ -167,7 +190,58 @@ export const parseRomaji = (
     return { kana: char, romaji }
 }
 
-// TODO: write documentation
+/**
+ * Generated random romaji inputs from available ones.
+ * @param payload - redux slice's payload
+ * @param family - kana family
+ * @param length - length of the generated text; amount of individual symbols
+ * @returns array comprised of romaji inputs user would type in
+ */
+const generateRandomInputs = ({
+    payload,
+    family,
+    length
+}: {
+    payload: KanaReduxPayload,
+    family: Kana.Family,
+    length: number
+} = {
+    payload: undefined,
+    family: 'hiragana',
+    length: 8
+}): string[] => {
+    const allPossibleInputs = Object
+        .values(payload ? payload[family].romaji : {})
+        .reduce((acc: Kana.Romaji[], data: Kana.RomajiData) => (
+            data.variants.sokuon
+                ? [...acc, data.value, data.value.charAt(0) + data.value]
+                : [...acc, data.value]
+        ), [])
+
+    const generatedInputs: string[] = []
+
+    while (generatedInputs.join('').length < length) {
+        const availableLength = length - generatedInputs.join('').length
+        let romaji = ''
+
+        while (romaji === '' || romaji.length > availableLength) {
+            const index = Math.floor(Math.random() * allPossibleInputs.length)
+            romaji = allPossibleInputs[index]
+        }
+
+        generatedInputs.push(romaji)
+    }
+
+    return generatedInputs
+}
+
+/**
+ * Generates a text of random hiragana chars based on all possible combinations loaded into the app.
+ * @param payload - redux slice's payload
+ * @param family - kana family
+ * @param length - length of the generated text; amount of individual symbols
+ * @returns array comprised of individual symbols and their other information
+ */
 export const generateRandom = ({
     payload,
     family,
@@ -186,38 +260,12 @@ export const generateRandom = ({
         return []
     }
 
-    const generate = (family: Kana.Family): Kana.Char[] => {
-        const allPossibleInputs = Object
-            .values(payload[family].romaji)
-            .reduce((acc: Kana.Romaji[], data: Kana.RomajiData) => (
-                data.variants.sokuon
-                    ? [...acc, data.value, data.value.charAt(0) + data.value]
-                    : [...acc, data.value]
-            ), [])
-
-        const generatedInputs: string[] = []
-
-        while (generatedInputs.join('').length < length) {
-            const availableLength = length - generatedInputs.join('').length
-            let romaji = ''
-
-            while (romaji === '' || romaji.length > availableLength) {
-                const index = Math.floor(Math.random() * allPossibleInputs.length)
-                romaji = allPossibleInputs[index]
-            }
-
-            generatedInputs.push(romaji)
-        }
-
-        console.log(generatedInputs)
-
-        return generatedInputs.map((romaji: Kana.Romaji) => (
-            parseRomaji(payload, romaji, family)
-        ))
+    if (family.includes('hiragana')) {
+        return generateRandomInputs({ payload, family: 'hiragana', length })
+            .map((romaji: Kana.Romaji) => (
+                parseRomaji(payload, romaji, 'hiragana')
+            ))
     }
-
-    if (family.includes('hiragana'))
-        return generate('hiragana')
 
     return []
 }

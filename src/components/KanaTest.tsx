@@ -31,7 +31,7 @@ function KanaTest() {
             setIndex(prevIndex => prevIndex + 1)
             setOffset(prevOffset => prevOffset + (
                 getTextWidth(
-                    KanaUtils.isValidSymbol(kana[index].kana) 
+                    KanaUtils.validSymbol(kana[index].kana) 
                         ? kana[index].kana
                         : kana[index].romaji
                 )
@@ -49,7 +49,7 @@ function KanaTest() {
             setIndex(prevIndex => prevIndex + 1)
             setOffset(prevOffset => prevOffset + (
                 getTextWidth(
-                    KanaUtils.isValidSymbol(kana[index].kana) 
+                    KanaUtils.validSymbol(kana[index].kana) 
                         ? kana[index].kana
                         : kana[index].romaji
                 )
@@ -66,7 +66,7 @@ function KanaTest() {
         <div style={{ transform: `translateX(-${offset}px)` }}>
             {kana.map(({ kana, romaji }: Kana.Char, index: number) => (
                 <span key={index}>
-                    {KanaUtils.isValidSymbol(kana) ? kana : romaji} 
+                    {KanaUtils.validSymbol(kana) ? kana : romaji} 
                 </span>
             ))}
         </div>
