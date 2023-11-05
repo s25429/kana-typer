@@ -10,7 +10,7 @@ import { getTextWidth } from '../utils/text'
 
 
 function KanaTest() {
-    console.log('KanaTest')
+    console.debug('KanaTest')
 
     const payload = useAppSelector(selectKana)
 
@@ -25,7 +25,7 @@ function KanaTest() {
 
         // correct char
         if (char.kana === kana[index].kana) {
-            console.log('correct')
+            console.debug('correct')
 
             setInputText('')
             setIndex(prevIndex => prevIndex + 1)
@@ -43,7 +43,7 @@ function KanaTest() {
         //  If romaji typed is not part of the correct answer
         else if (char.kana !== KanaUtils.unicodeHexToSymbol('') && 
                 !kana[index].romaji.includes(char.romaji)) { 
-            console.error('wrong')
+            console.debug('wrong')
 
             setInputText('')
             setIndex(prevIndex => prevIndex + 1)

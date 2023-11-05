@@ -75,17 +75,16 @@ const getUnicodes = (data: UnicodeObject, romaji: RomajiObject): UnicodeObject =
         ), {})
 )
 
-const getKanaMap = (data: UnicodeObject): MapObject => (
+const getKanaMap = (unicodes: UnicodeObject, romaji: RomajiObject): MapObject => (
     Object
-        .entries(data)
+        .entries(unicodes)
         .reduce((
-            acc: MapObject, 
+            acc: MapObject,
             [code, data]: [Kana.Unicode, Kana.UnicodeDataNew]
-        ) => (
-            data.small
-                ? { ...acc, [`x${data.key}`]: code }
-                : { ...acc, [data.key]: code }
-        ), {})
+        ) => ({ 
+            ...acc, 
+            [(data.small ? 'x' : '') + romaji[data.key]?.value]: code
+        }), {})
 )
 
 export const fetchKana = createAsyncThunk('kana/fetch', async () => {
@@ -97,7 +96,7 @@ export const fetchKana = createAsyncThunk('kana/fetch', async () => {
 
     const romajiData = getRomajiInputs(romajiMap.hiragana)
     const unicodeData = getUnicodes(unicodeMap.hiragana, romajiData)
-    const mapData = getKanaMap(unicodeData)
+    const mapData = getKanaMap(unicodeData, romajiData)
 
     const ret: Payload = {
         hiragana: {

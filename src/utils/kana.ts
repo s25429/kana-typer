@@ -42,7 +42,7 @@ export const validRomaji = (
     family: Kana.Family = 'hiragana'
 ): boolean => (
     Object
-        .keys(payload ? payload[family].romaji : {})
+        .keys(payload ? payload[family].map : {})
         .includes(romaji)
 )
 
@@ -52,7 +52,7 @@ export const validRomaji = (
  */
 export const validUnicode = (
     payload: KanaReduxPayload,
-    romaji: string, 
+    romaji: Kana.Romaji, 
     family: Kana.Family = 'hiragana'
 ): boolean => (
     Object
@@ -73,7 +73,7 @@ export const parseSokuon = (
     romaji.charAt(0) === 'x' || // assumes small chars with sokuon as invalid, e.g. っぁ, where ぁ =/= あ
     romaji.charAt(0) !== romaji.charAt(1) // two first letters are not the same
         ? null
-        : [romaji.charAt(0) === 'n' ? 'n' : 'xtsu', romaji.slice(1)]
+        : ['xtsu', romaji.slice(1)]
 )
 
 /**
@@ -130,11 +130,10 @@ export const parseYoonWithSokuon = (
  */
 export const parseAvailableKana = (
     payload: KanaReduxPayload,
-    romaji: Kana.Romaji
+    romaji: Kana.Romaji,
+    family: Kana.Family = 'hiragana'
 ): Kana.Romaji[] | null => (
-    validRomaji(payload, romaji) || validUnicode(payload, romaji) 
-        ? [romaji] 
-        : null
+    validRomaji(payload, romaji, family) ? [romaji] : null
 )
 
 /**
@@ -153,12 +152,12 @@ export const parseRomaji = (
         parseYoonWithSokuon(romaji) ?? 
         parseYoon(romaji) ?? 
         parseSokuon(romaji) ??
-        parseAvailableKana(payload, romaji) ??
+        parseAvailableKana(payload, romaji, family) ??
         ['']
 
     const char = parsed
         .map((romaji: Kana.Romaji) => (
-            validRomaji(payload, romaji.charAt(0) === 'x' ? romaji.slice(1) : romaji) && payload !== undefined
+            payload !== undefined && validRomaji(payload, romaji, family)
                 ? payload[family].map[romaji]
                 : missingUnicode
         ))
@@ -169,7 +168,6 @@ export const parseRomaji = (
 }
 
 // TODO: write documentation
-// TODO: fix length parameter to be the amount of chars, not array items
 export const generateRandom = ({
     payload,
     family,
@@ -189,17 +187,29 @@ export const generateRandom = ({
     }
 
     const generate = (family: Kana.Family): Kana.Char[] => {
-        const allInputs = Object
-            .keys(payload[family].romaji)
-            .reduce((acc: Kana.Romaji[], value: Kana.Romaji) => (
-                value.length > 1 && value.charAt(0) !== 'x'
-                    ? [...acc, value, value.charAt(0) + value]
-                    : [...acc, value]
+        const allPossibleInputs = Object
+            .values(payload[family].romaji)
+            .reduce((acc: Kana.Romaji[], data: Kana.RomajiData) => (
+                data.variants.sokuon
+                    ? [...acc, data.value, data.value.charAt(0) + data.value]
+                    : [...acc, data.value]
             ), [])
-        
-        const generatedInputs = Array.from({ length }, () => (
-            allInputs[Math.floor(Math.random() * allInputs.length)]
-        ))
+
+        const generatedInputs: string[] = []
+
+        while (generatedInputs.join('').length < length) {
+            const availableLength = length - generatedInputs.join('').length
+            let romaji = ''
+
+            while (romaji === '' || romaji.length > availableLength) {
+                const index = Math.floor(Math.random() * allPossibleInputs.length)
+                romaji = allPossibleInputs[index]
+            }
+
+            generatedInputs.push(romaji)
+        }
+
+        console.log(generatedInputs)
 
         return generatedInputs.map((romaji: Kana.Romaji) => (
             parseRomaji(payload, romaji, family)

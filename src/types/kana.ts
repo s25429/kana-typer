@@ -3,6 +3,8 @@ export namespace Kana {
 
     export type Romaji = string
 
+    export type RomajiKey = Romaji
+
     export type Status = 'pending' | 'fulfilled' | 'rejected'
 
     export type Family = 'hiragana' | 'katakana' | 'kanji'

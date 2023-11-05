@@ -1,6 +1,6 @@
 {
     "hiragana": {
-        "3041": {
+        "3042": {
             "key": "a",
             "group": "letters",
             "title": "hiragana letter a",
@@ -250,6 +250,15 @@
             "description": "",
             "type": "gojuon",
             "small": false,
+            "combination": []
+        },
+        "3063": {
+            "key": "tu",
+            "group": "letters",
+            "title": "small hiragana letter tsu",
+            "description": "",
+            "type": "gojuon",
+            "small": true,
             "combination": []
         },
         "3064": {

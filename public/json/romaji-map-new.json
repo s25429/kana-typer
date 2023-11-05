@@ -210,7 +210,7 @@
             "family": "t",
             "value": "tsu",
             "type": { "gojuon": true, "dakuten": false, "handakuten": false, "yoon": false },
-            "variants": { "sokuon": true, "small": false },
+            "variants": { "sokuon": true, "small": true },
             "info": { "unused": false, "extinct": false, "obsolete": false }
         },
         "te": {
