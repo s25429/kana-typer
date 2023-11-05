@@ -40,7 +40,8 @@ function KanaTest() {
                 getTextWidth(
                     KanaUtils.validSymbol(kana[index].kana) 
                         ? kana[index].kana
-                        : kana[index].romaji
+                        : kana[index].romaji,
+                    document.querySelector('.kana') as HTMLElement
                 )
             ))
             setStats(prevStats => ({ 
@@ -63,7 +64,8 @@ function KanaTest() {
                 getTextWidth(
                     KanaUtils.validSymbol(kana[index].kana) 
                         ? kana[index].kana
-                        : kana[index].romaji
+                        : kana[index].romaji,
+                    document.querySelector('.kana') as HTMLElement
                 )
             ))
             setStats(prevStats => ({ 
@@ -86,22 +88,32 @@ function KanaTest() {
     }, [kana])
 
     return (<>
-        <div style={{ transform: `translateX(-${offset}px)` }}>
-            {kana.map(({ kana, romaji }: Kana.Char, index: number) => (
-                <span key={index}>
-                    {KanaUtils.validSymbol(kana) ? kana : romaji} 
-                </span>
-            ))}
-        </div>
-        <br />
-        <input type="text" value={inputText} onChange={handleInputOnChange} />
-        <button onClick={funcs.reloadChars}>🔃</button>
-        <br />
-        <pre>
-            <code>
-                ✔ {stats.correct} | ✖ {stats.incorrect}
-            </code>
-        </pre>
+        <main className='typer-container'>
+            <div className="typer">
+                <div style={{ transform: `translateX(-${offset}px)` }} className='kana'>
+                    {kana.map(({ kana, romaji }: Kana.Char, key: number) => (
+                        <span key={key} className={
+                            (key < index ? 'faded' : '') 
+                            + ' ' +
+                            (true ? '' : '')
+                        }>
+                            {KanaUtils.validSymbol(kana) ? kana : romaji} 
+                        </span>
+                    ))}
+                </div>
+                <input type="text" value={inputText} onChange={handleInputOnChange} placeholder='type here...' />
+            </div>
+        </main>
+
+        <section className='stats'>
+            <button onClick={funcs.reloadChars}>New</button>
+            <br />
+            <pre>
+                <code>
+                    ✔ {stats.correct} | ✖ {stats.incorrect}
+                </code>
+            </pre>
+        </section>
     </>)
 }
 

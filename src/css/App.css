@@ -1,0 +1,51 @@
+#root {
+    margin: 0 auto;
+    padding: 2rem;
+
+    max-width: 1280px;
+
+    /* overflow-x: hidden; */
+}
+
+.typer-container {
+    margin-bottom: 2rem;
+
+    mask-image: linear-gradient(
+        to right, 
+        transparent 0%, 
+        black 50%,
+        black 85%, 
+        transparent 100%);
+    mask-repeat: no-repeat; 
+}
+
+.typer {
+    --offset-fix: 3px;
+
+    transform: translateX(calc(50% - var(--offset-fix)));
+}
+
+.typer .kana {
+    font-size: 3rem;
+    word-break: keep-all;
+
+    transition: transform .1s linear;
+}
+
+.typer input[type=text] {
+    font-size: 1.5rem;
+
+    background-color: transparent;
+    border: none;
+    outline: none;
+
+    transform: translateX(var(--offset-fix));
+}
+
+.typer input[type=text]:focus::placeholder {
+    color: transparent
+}
+
+.stats {
+    text-align: center;
+}

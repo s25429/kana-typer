@@ -38,7 +38,7 @@ function useKanaTyper(): [Kana.Char[], ...any] {
         setChars(KanaUtils.generateRandom({ 
             payload: kana, 
             family: ['hiragana'], 
-            length: 8 
+            length: 24 
         }))
     }
 
