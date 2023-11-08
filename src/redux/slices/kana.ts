@@ -88,7 +88,7 @@ const getKanaMap = (unicodes: UnicodeObject, romaji: RomajiObject): MapObject =>
 )
 
 export const fetchKana = createAsyncThunk('kana/fetch', async () => {
-    await Promise.resolve('redux thunk for kana loading').then(v => console.debug(v))
+    await Promise.resolve('redux thunk for kana loading').then(v => console.log(v))
     await new Promise(resolve => setTimeout(resolve, 1000)) // TODO: DEBUG
 
     const romajiMap: JSON.RomajiMapNew = await fetchJSON('json/romaji-map-new.json')

@@ -1,20 +1,20 @@
 import type { Kana } from '../types/kana'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { useAppSelector } from '../redux/hooks'
 import { selectKana } from '../redux/slices/kana'
 import useKanaTyper from '../hooks/useKanaTyper'
 
 import * as KanaUtils from '../utils/kana'
-import { getTextWidth } from '../utils/text'
+import { getTextWidth, getStyle } from '../utils/text'
 
 
 function KanaTest() {
-    console.debug('KanaTest')
+    console.log(KanaTest.name)
 
     const payload = useAppSelector(selectKana)
 
-    const [kana, funcs] = useKanaTyper()
+    const [kana, setKana] = useKanaTyper()
     
     const [inputText, setInputText] = useState<string>('')
     const [index, setIndex] = useState<number>(0)
@@ -24,6 +24,42 @@ function KanaTest() {
         incorrect: 0,
     }))
 
+    /**
+     * Calculates the optimal length of generated kana so that more kana can be later generated before user sees the end of it. Greater fill value on initial load is recommended.
+     * @param fill - how much size (in percentage) of the actual screen width should characters take
+     * @returns an estimated amount of chars to generate
+     */
+    const getOptimalLength = (fill: number = 0.75) => {
+        const char = payload 
+            ? KanaUtils.unicodeHexToSymbol(payload.hiragana.map['a'])
+            : 'あ'
+        const elt = document.querySelector('.kana') || document.body
+        const charWidth = getTextWidth(char, elt as HTMLElement)
+        const windowWidth = window.innerWidth // TODO: does not include devtools win
+        return Math.ceil(windowWidth / charWidth * fill)
+    }
+
+    const reloadChars = () => {
+        setKana(KanaUtils.generateRandom({ 
+            payload: payload, 
+            family: ['hiragana'], 
+            length: getOptimalLength(1)
+        }))
+        index === 0 || setIndex(0)
+        offset === 0 || setOffset(0)
+    }
+
+    const appendChars = (fill: number = 0.75) => {
+        setKana(prevChars => ([
+            ...prevChars,
+            ...KanaUtils.generateRandom({ 
+                payload: payload, 
+                family: ['hiragana'], 
+                length: getOptimalLength(fill)
+            })
+        ]))
+    }
+
     const handleInputOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value
         const char = KanaUtils.parseRomaji(payload, value.toLowerCase(), 'hiragana')
@@ -32,7 +68,7 @@ function KanaTest() {
 
         // correct char
         if (char.kana === kana[index].kana) {
-            console.debug('%c' + '✔ Correct!', 'color: lightgreen')
+            console.log('%c' + '✔ Correct!', 'color: lightgreen')
 
             setInputText('')
             setIndex(prevIndex => prevIndex + 1)
@@ -56,7 +92,7 @@ function KanaTest() {
         // TODO: does not matter where part of romaji is: 'sse'.includes('ss') && 'sse'.includes('se'), where latter should be wrong
         else if (char.kana !== KanaUtils.unicodeHexToSymbol('') && 
                 !kana[index].romaji.includes(char.romaji)) { 
-            console.debug('%c' + '✖ Wrong!', 'color: red')
+            console.log('%c' + '✖ Wrong!', 'color: red')
 
             setInputText('')
             setIndex(prevIndex => prevIndex + 1)
@@ -76,16 +112,34 @@ function KanaTest() {
 
         // not done typing
         else {
-            console.debug('%c' + '⏲ Typing...', 'color: yellow')
+            console.log('%c' + '⏲ Typing...', 'color: yellow')
 
             setInputText(value)
         }
+
+        // check if more kanas need to be appended
+        const kanaElt = document.querySelector('.kana') as HTMLElement
+        const lastElt = kanaElt.children[kanaElt.children.length - 1] as HTMLElement
+        const lastEltPos = lastElt.offsetLeft - offset
+
+        if (lastEltPos < window.innerWidth / 2) {
+            appendChars()
+        }
+
+
+
+        // const kanaElt = document.querySelector('.kana') as HTMLElement
+        // const matrix = getStyle(kanaElt, 'transform')
+        // const translate = matrix.includes('matrix')
+        //     ? parseInt(matrix.split(',')[4])
+        //     : (() => { console.error('ERROR #12345'); return null })()
+        // console.log(translate)
     }
 
-    useEffect(() => {
-        index === 0 || setIndex(0)
-        offset === 0 || setOffset(0)
-    }, [kana])
+    // useEffect(() => {
+    //     index === 0 || setIndex(0)
+    //     offset === 0 || setOffset(0)
+    // }, [handleKanaReload])
 
     return (<>
         <main className='typer-container'>
@@ -106,7 +160,7 @@ function KanaTest() {
         </main>
 
         <section className='stats'>
-            <button onClick={funcs.reloadChars}>New</button>
+            <button onClick={reloadChars}>New</button>
             <br />
             <pre>
                 <code>

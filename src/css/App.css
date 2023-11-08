@@ -1,19 +1,17 @@
 #root {
     margin: 0 auto;
     padding: 2rem;
-
-    max-width: 1280px;
-
-    /* overflow-x: hidden; */
 }
 
 .typer-container {
     margin-bottom: 2rem;
 
+    overflow-x: hidden;
+
     mask-image: linear-gradient(
         to right, 
         transparent 0%, 
-        black 50%,
+        black 50%, 
         black 85%, 
         transparent 100%);
     mask-repeat: no-repeat; 
