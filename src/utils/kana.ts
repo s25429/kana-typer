@@ -219,17 +219,26 @@ const generateRandomInputs = ({
         ), [])
 
     const generatedInputs: string[] = []
+    let totalLength = 0
 
-    while (generatedInputs.join('').length < length) {
-        const availableLength = length - generatedInputs.join('').length
+    while (totalLength < length) {
+        const availableLength = length - totalLength
         let romaji = ''
+        let romajiLength = 0
 
-        while (romaji === '' || romaji.length > availableLength) {
+        while (romaji === '' || romajiLength > availableLength) {
             const index = Math.floor(Math.random() * allPossibleInputs.length)
             romaji = allPossibleInputs[index]
+            romajiLength = (// TODO: duplicate code
+                parseYoonWithSokuon(romaji) ?? 
+                parseYoon(romaji) ?? 
+                parseSokuon(romaji) ??
+                [romaji]
+            ).length
         }
 
         generatedInputs.push(romaji)
+        totalLength += romajiLength
     }
 
     return generatedInputs
